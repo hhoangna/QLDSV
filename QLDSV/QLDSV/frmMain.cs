@@ -101,14 +101,14 @@ namespace QLDSV
 
         private void btnSubject_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Form frm = this.CheckExists(typeof(frmSubjects));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmSubjects f = new frmSubjects();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
+            Form frm = this.CheckExists(typeof(frmSubject));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmSubject f = new frmSubject();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnCLass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

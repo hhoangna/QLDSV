@@ -52,11 +52,12 @@ namespace QLDSV
         public static String insertDate = "";
         public static String insertNumberQuest = "";
 
-        public static String UPDATE_METHOD = "UPDATE";
-        public static String DETELE_METHOD = "DELETE";
-        public static String NEW_METHOD = "NEW";
-
-        public enum Method { New = 0, Edit, Delete };
+        public enum Method
+        {
+            Update = 'U',
+            Delete = 'D',
+            New = 'N'
+        }
 
         public static int Connection()
         {
