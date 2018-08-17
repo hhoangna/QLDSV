@@ -774,7 +774,7 @@ namespace QLDSV.dsViewTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::QLDSV.Properties.Settings.Default.QLDSVConnectionString;
+            this._connection.ConnectionString = global::QLDSV.Properties.Settings.Default.QLDSV_View;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

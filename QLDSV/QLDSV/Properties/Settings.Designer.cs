@@ -44,5 +44,15 @@ namespace QLDSV.Properties {
                 return ((string)(this["QLDSV_Server"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HHUMOROUS-PC;Initial Catalog=QLDSV;Integrated Security=True")]
+        public string QLDSV_View {
+            get {
+                return ((string)(this["QLDSV_View"]));
+            }
+        }
     }
 }
