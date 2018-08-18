@@ -113,14 +113,14 @@ namespace QLDSV
 
         private void btnCLass_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Form frm = this.CheckExists(typeof(frmClass));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmClass f = new frmClass();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
+            Form frm = this.CheckExists(typeof(frmClass));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmClass f = new frmClass();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnTeacher_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

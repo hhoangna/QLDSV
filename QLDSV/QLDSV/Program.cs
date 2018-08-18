@@ -52,11 +52,11 @@ namespace QLDSV
         public static String insertDate = "";
         public static String insertNumberQuest = "";
 
-        public enum Method
+        public struct Method
         {
-            Update = 'U',
-            Delete = 'D',
-            New = 'N'
+            public const string Update = "U";
+            public const string New = "N";
+            public const string Delete = "D";
         }
 
         public static int Connection()

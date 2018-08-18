@@ -15,7 +15,7 @@ namespace QLDSV
         int index;
         String currentSubName = "";
         String currentSubID = "";
-        Program.Method method = Program.Method.New;
+        string method = Program.Method.New;
 
         public frmSubject()
         {
@@ -93,9 +93,14 @@ namespace QLDSV
                 MessageBox.Show("Subjects ID or Subject Name can not empty!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            else if (checkExistData(txtSubID.Text.Trim(), method) == "-1")
+            else if (checkExistData(txtSubID.Text.Trim(), method, txtSubName.Text.Trim()) == "-1")
             {
-                MessageBox.Show("Subject already exists!", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("SubjectID already exists!", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            else if (checkExistData(txtSubID.Text.Trim(), method, txtSubName.Text.Trim()) == "1")
+            {
+                MessageBox.Show("SubjectName already exists!", "Error", MessageBoxButtons.OK);
                 return;
             }
             else
@@ -147,7 +152,7 @@ namespace QLDSV
             btnSave.Enabled = btnCancel.Enabled = false;
         }
 
-        private String checkExistData(String subId, Program.Method method)
+        private String checkExistData(String subId, string method, string subName)
         {
             String sqlStr = "";
             Program.connect.Open();
@@ -159,6 +164,7 @@ namespace QLDSV
 
             Program.cmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = subId;
             Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
+            Program.cmd.Parameters.Add("@TENMH", SqlDbType.NVarChar).Value = subName;
             Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.VarChar).Direction = ParameterDirection.ReturnValue;
             Program.cmd.ExecuteNonQuery();
             Program.connect.Close();
@@ -176,7 +182,7 @@ namespace QLDSV
             currentSubID = ((DataRowView)bdsSubject[index])["MAMH"].ToString();
             method = Program.Method.Delete;
 
-            String check = checkExistData(currentSubID, method);
+            String check = checkExistData(currentSubID, method, currentSubName);
 
             if (check == "-1" || bdsScore.Count > 0)
             {
