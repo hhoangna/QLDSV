@@ -32,6 +32,9 @@ namespace QLDSV
 
         private void frmSubject_Load(object sender, EventArgs e)
         {
+            dsQLDSV.EnforceConstraints = false;
+            // TODO: This line of code loads data into the 'dsQLDSV.DIEM' table. You can move, or remove it, as needed.
+            this.dIEMTableAdapter.Fill(this.dsQLDSV.DIEM);
             // TODO: This line of code loads data into the 'dsQLDSV.MONHOC' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Fill(this.dsQLDSV.MONHOC);
 
@@ -175,7 +178,7 @@ namespace QLDSV
 
             String check = checkExistData(currentSubID, method);
 
-            if (check == "-1")
+            if (check == "-1" || bdsScore.Count > 0)
             {
                 MessageBox.Show("Can not delete " + currentSubName + " subject. \nThe subject has data available! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
@@ -209,6 +212,13 @@ namespace QLDSV
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             bdsSubject.Filter = "MAMH LIKE '%" + this.txtSearch.Text + "%'" + " OR TENMH LIKE '%" + this.txtSearch.Text + "%'";
+        }
+
+        private void Max_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            this.Parent = null;
+            e.Cancel = true;
         }
     }
 }

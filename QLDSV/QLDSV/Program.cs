@@ -17,7 +17,7 @@ namespace QLDSV
         /// 
         public static String serverName = "";
         public static String userName = "";
-        public static String password = "";
+        public static String password = "123123";
         public static String loginName = "";
 
         public static String currentID = "";
@@ -66,7 +66,7 @@ namespace QLDSV
             try
             {
                 Program.connectStr = "Data Source=" + Program.serverName + ";Initial Catalog=" +
-                      Program.databaseName + ";User ID=" +
+                      Program.databaseName + ";Trusted_Connection=TRUE;User ID=" +
                       Program.userName + ";password=" + Program.password;
                 Program.connect.ConnectionString = Program.connectStr;
                 Program.connect.Open();

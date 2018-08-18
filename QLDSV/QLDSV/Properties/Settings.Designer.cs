@@ -26,11 +26,10 @@ namespace QLDSV.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HHUMOROUS-PC;Initial Catalog=QLDSV;Persist Security Info=True;User ID" +
-            "=sa")]
-        public string QLDSVConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HHUMOROUS-PC;Initial Catalog=QLDSV;Integrated Security=True")]
+        public string QLDSV_View {
             get {
-                return ((string)(this["QLDSVConnectionString"]));
+                return ((string)(this["QLDSV_View"]));
             }
         }
         
@@ -38,20 +37,10 @@ namespace QLDSV.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HHUMOROUS-PC\\MSSQLSERVER1;Initial Catalog=QLDSV;Persist Security Info" +
-            "=True;User ID=sa")]
+            "=True;User ID=sa;Password=123123")]
         public string QLDSV_Server {
             get {
                 return ((string)(this["QLDSV_Server"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=HHUMOROUS-PC;Initial Catalog=QLDSV;Integrated Security=True")]
-        public string QLDSV_View {
-            get {
-                return ((string)(this["QLDSV_View"]));
             }
         }
     }

@@ -42,6 +42,8 @@
             this.txtSubName = new DevExpress.XtraEditors.TextEdit();
             this.txtSubID = new DevExpress.XtraEditors.TextEdit();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.mONHOCGridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
@@ -55,18 +57,19 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.mONHOCGridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.bdsScore = new System.Windows.Forms.BindingSource(this.components);
+            this.dIEMTableAdapter = new QLDSV.dsQLDSVTableAdapters.DIEMTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsSubject)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubID.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsSubject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mONHOCGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsScore)).BeginInit();
             this.SuspendLayout();
             // 
             // dsQLDSV
@@ -78,6 +81,43 @@
             // 
             this.bdsSubject.DataMember = "MONHOC";
             this.bdsSubject.DataSource = this.dsQLDSV;
+            // 
+            // mONHOCTableAdapter
+            // 
+            this.mONHOCTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.DIEMTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.KHOATableAdapter = null;
+            this.tableAdapterManager.LOPTableAdapter = null;
+            this.tableAdapterManager.MONHOCTableAdapter = this.mONHOCTableAdapter;
+            this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // colMAMH
+            // 
+            this.colMAMH.Caption = "Subjects ID";
+            this.colMAMH.FieldName = "MAMH";
+            this.colMAMH.Name = "colMAMH";
+            this.colMAMH.OptionsColumn.AllowEdit = false;
+            this.colMAMH.OptionsColumn.ReadOnly = true;
+            this.colMAMH.Visible = true;
+            this.colMAMH.VisibleIndex = 0;
+            this.colMAMH.Width = 295;
+            // 
+            // colTENMH
+            // 
+            this.colTENMH.Caption = "Subjects Name";
+            this.colTENMH.FieldName = "TENMH";
+            this.colTENMH.Name = "colTENMH";
+            this.colTENMH.OptionsColumn.AllowEdit = false;
+            this.colTENMH.OptionsColumn.ReadOnly = true;
+            this.colTENMH.Visible = true;
+            this.colTENMH.VisibleIndex = 1;
+            this.colTENMH.Width = 781;
             // 
             // mAMHLabel
             // 
@@ -107,7 +147,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1102, 251);
+            this.groupBox1.Size = new System.Drawing.Size(1179, 260);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -143,26 +183,11 @@
             // 
             this.groupBox2.Controls.Add(this.mONHOCGridControl);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 310);
+            this.groupBox2.Location = new System.Drawing.Point(0, 319);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1102, 290);
+            this.groupBox2.Size = new System.Drawing.Size(1179, 281);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            // 
-            // mONHOCTableAdapter
-            // 
-            this.mONHOCTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.DIEMTableAdapter = null;
-            this.tableAdapterManager.GIANGVIENTableAdapter = null;
-            this.tableAdapterManager.KHOATableAdapter = null;
-            this.tableAdapterManager.LOPTableAdapter = null;
-            this.tableAdapterManager.MONHOCTableAdapter = this.mONHOCTableAdapter;
-            this.tableAdapterManager.SINHVIENTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // mONHOCGridControl
             // 
@@ -171,7 +196,7 @@
             this.mONHOCGridControl.Location = new System.Drawing.Point(3, 26);
             this.mONHOCGridControl.MainView = this.gridView1;
             this.mONHOCGridControl.Name = "mONHOCGridControl";
-            this.mONHOCGridControl.Size = new System.Drawing.Size(1096, 261);
+            this.mONHOCGridControl.Size = new System.Drawing.Size(1173, 252);
             this.mONHOCGridControl.TabIndex = 0;
             this.mONHOCGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -187,28 +212,6 @@
             this.gridView1.OptionsView.ShowDetailButtons = false;
             this.gridView1.OptionsView.ShowGroupExpandCollapseButtons = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
-            // 
-            // colMAMH
-            // 
-            this.colMAMH.Caption = "Subjects ID";
-            this.colMAMH.FieldName = "MAMH";
-            this.colMAMH.Name = "colMAMH";
-            this.colMAMH.OptionsColumn.AllowEdit = false;
-            this.colMAMH.OptionsColumn.ReadOnly = true;
-            this.colMAMH.Visible = true;
-            this.colMAMH.VisibleIndex = 0;
-            this.colMAMH.Width = 295;
-            // 
-            // colTENMH
-            // 
-            this.colTENMH.Caption = "Subjects Name";
-            this.colTENMH.FieldName = "TENMH";
-            this.colTENMH.Name = "colTENMH";
-            this.colTENMH.OptionsColumn.AllowEdit = false;
-            this.colTENMH.OptionsColumn.ReadOnly = true;
-            this.colTENMH.Visible = true;
-            this.colTENMH.VisibleIndex = 1;
-            this.colTENMH.Width = 781;
             // 
             // barManager1
             // 
@@ -310,14 +313,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1102, 59);
+            this.barDockControlTop.Size = new System.Drawing.Size(1179, 59);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 600);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1102, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1179, 0);
             // 
             // barDockControlLeft
             // 
@@ -330,7 +333,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1102, 59);
+            this.barDockControlRight.Location = new System.Drawing.Point(1179, 59);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 541);
             // 
             // txtSearch
@@ -341,11 +344,20 @@
             this.txtSearch.TabIndex = 6;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
+            // bdsScore
+            // 
+            this.bdsScore.DataMember = "FK_DIEM_MONHOC";
+            this.bdsScore.DataSource = this.bdsSubject;
+            // 
+            // dIEMTableAdapter
+            // 
+            this.dIEMTableAdapter.ClearBeforeFill = true;
+            // 
             // frmSubject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1102, 600);
+            this.ClientSize = new System.Drawing.Size(1179, 600);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -355,19 +367,20 @@
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmSubjects";
+            this.Name = "frmSubject";
             this.Text = "Subjects";
             this.Load += new System.EventHandler(this.frmSubject_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsSubject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mONHOCGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSubID.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mONHOCGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsScore)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,5 +417,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.TextBox txtSearch;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.BindingSource bdsScore;
+        private dsQLDSVTableAdapters.DIEMTableAdapter dIEMTableAdapter;
     }
 }
