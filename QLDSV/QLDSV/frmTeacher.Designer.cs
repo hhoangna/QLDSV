@@ -1,6 +1,6 @@
 ﻿namespace QLDSV
 {
-    partial class frmClass
+    partial class frmTeacher
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dsQLDSV = new QLDSV.dsQLDSV();
-            this.lOPTableAdapter = new QLDSV.dsQLDSVTableAdapters.LOPTableAdapter();
+            this.gIANGVIENTableAdapter = new QLDSV.dsQLDSVTableAdapters.GIANGVIENTableAdapter();
             this.tableAdapterManager = new QLDSV.dsQLDSVTableAdapters.TableAdapterManager();
-            this.bdsClass = new System.Windows.Forms.BindingSource(this.components);
-            this.lOPGridControl = new DevExpress.XtraGrid.GridControl();
+            this.bdsTeacher = new System.Windows.Forms.BindingSource(this.components);
+            this.gIANGVIENGridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ClassID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ClassName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TeacherID = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FirstName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.LastName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.DepID = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.lblClassId = new System.Windows.Forms.Label();
-            this.lblClassName = new System.Windows.Forms.Label();
+            this.lblTeacherId = new System.Windows.Forms.Label();
+            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblFirstName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDepId = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -58,20 +60,22 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtClassName = new DevExpress.XtraEditors.TextEdit();
-            this.txtClassId = new DevExpress.XtraEditors.TextEdit();
+            this.txtLastName = new DevExpress.XtraEditors.TextEdit();
+            this.txtFirstName = new DevExpress.XtraEditors.TextEdit();
+            this.txtTeacherId = new DevExpress.XtraEditors.TextEdit();
             this.cbbDep = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClass)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsTeacher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gIANGVIENGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDepId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClassName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClassId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTeacherId.Properties)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,70 +84,81 @@
             this.dsQLDSV.DataSetName = "dsQLDSV";
             this.dsQLDSV.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // lOPTableAdapter
+            // gIANGVIENTableAdapter
             // 
-            this.lOPTableAdapter.ClearBeforeFill = true;
+            this.gIANGVIENTableAdapter.ClearBeforeFill = true;
             // 
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.DIEMTableAdapter = null;
-            this.tableAdapterManager.GIANGVIENTableAdapter = null;
+            this.tableAdapterManager.GIANGVIENTableAdapter = this.gIANGVIENTableAdapter;
             this.tableAdapterManager.KHOATableAdapter = null;
-            this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
+            this.tableAdapterManager.LOPTableAdapter = null;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // bdsClass
+            // bdsTeacher
             // 
-            this.bdsClass.DataMember = "LOP";
-            this.bdsClass.DataSource = this.dsQLDSV;
+            this.bdsTeacher.DataMember = "GIANGVIEN";
+            this.bdsTeacher.DataSource = this.dsQLDSV;
             // 
-            // lOPGridControl
+            // gIANGVIENGridControl
             // 
-            this.lOPGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.gIANGVIENGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lOPGridControl.DataSource = this.bdsClass;
-            this.lOPGridControl.Location = new System.Drawing.Point(0, 17);
-            this.lOPGridControl.MainView = this.gridView1;
-            this.lOPGridControl.Name = "lOPGridControl";
-            this.lOPGridControl.Size = new System.Drawing.Size(1172, 286);
-            this.lOPGridControl.TabIndex = 2;
-            this.lOPGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gIANGVIENGridControl.DataSource = this.bdsTeacher;
+            this.gIANGVIENGridControl.Location = new System.Drawing.Point(0, 17);
+            this.gIANGVIENGridControl.MainView = this.gridView1;
+            this.gIANGVIENGridControl.Name = "gIANGVIENGridControl";
+            this.gIANGVIENGridControl.Size = new System.Drawing.Size(1172, 286);
+            this.gIANGVIENGridControl.TabIndex = 2;
+            this.gIANGVIENGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ClassID,
-            this.ClassName,
+            this.TeacherID,
+            this.FirstName,
+            this.LastName,
             this.DepID});
-            this.gridView1.GridControl = this.lOPGridControl;
+            this.gridView1.GridControl = this.gIANGVIENGridControl;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Default;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
-            // ClassID
+            // TeacherID
             // 
-            this.ClassID.Caption = "ClassID";
-            this.ClassID.FieldName = "MALOP";
-            this.ClassID.Name = "ClassID";
-            this.ClassID.OptionsColumn.AllowEdit = false;
-            this.ClassID.OptionsColumn.ReadOnly = true;
-            this.ClassID.Visible = true;
-            this.ClassID.VisibleIndex = 0;
+            this.TeacherID.Caption = "TeacherID";
+            this.TeacherID.FieldName = "MAGV";
+            this.TeacherID.Name = "TeacherID";
+            this.TeacherID.OptionsColumn.AllowEdit = false;
+            this.TeacherID.OptionsColumn.ReadOnly = true;
+            this.TeacherID.Visible = true;
+            this.TeacherID.VisibleIndex = 0;
             // 
-            // ClassName
+            // FirstName
             // 
-            this.ClassName.Caption = "ClassName";
-            this.ClassName.FieldName = "TENLOP";
-            this.ClassName.Name = "ClassName";
-            this.ClassName.OptionsColumn.AllowEdit = false;
-            this.ClassName.OptionsColumn.ReadOnly = true;
-            this.ClassName.Visible = true;
-            this.ClassName.VisibleIndex = 1;
+            this.FirstName.Caption = "FirstName";
+            this.FirstName.FieldName = "HO";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.OptionsColumn.AllowEdit = false;
+            this.FirstName.OptionsColumn.ReadOnly = true;
+            this.FirstName.Visible = true;
+            this.FirstName.VisibleIndex = 1;
+            // 
+            // LastName
+            // 
+            this.LastName.Caption = "LastName";
+            this.LastName.FieldName = "TEN";
+            this.LastName.Name = "LastName";
+            this.LastName.OptionsColumn.AllowEdit = false;
+            this.LastName.OptionsColumn.ReadOnly = true;
+            this.LastName.Visible = true;
+            this.LastName.VisibleIndex = 2;
             // 
             // DepID
             // 
@@ -153,27 +168,37 @@
             this.DepID.OptionsColumn.AllowEdit = false;
             this.DepID.OptionsColumn.ReadOnly = true;
             this.DepID.Visible = true;
-            this.DepID.VisibleIndex = 2;
+            this.DepID.VisibleIndex = 3;
             // 
-            // lblClassId
+            // lblTeacherId
             // 
-            this.lblClassId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblClassId.AutoSize = true;
-            this.lblClassId.Location = new System.Drawing.Point(662, 126);
-            this.lblClassId.Name = "lblClassId";
-            this.lblClassId.Size = new System.Drawing.Size(79, 22);
-            this.lblClassId.TabIndex = 4;
-            this.lblClassId.Text = "Class ID";
+            this.lblTeacherId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTeacherId.AutoSize = true;
+            this.lblTeacherId.Location = new System.Drawing.Point(528, 126);
+            this.lblTeacherId.Name = "lblTeacherId";
+            this.lblTeacherId.Size = new System.Drawing.Size(98, 22);
+            this.lblTeacherId.TabIndex = 4;
+            this.lblTeacherId.Text = "Teacher ID";
             // 
-            // lblClassName
+            // lblLastName
             // 
-            this.lblClassName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblClassName.AutoSize = true;
-            this.lblClassName.Location = new System.Drawing.Point(636, 164);
-            this.lblClassName.Name = "lblClassName";
-            this.lblClassName.Size = new System.Drawing.Size(105, 22);
-            this.lblClassName.TabIndex = 6;
-            this.lblClassName.Text = "Class Name";
+            this.lblLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblLastName.AutoSize = true;
+            this.lblLastName.Location = new System.Drawing.Point(825, 164);
+            this.lblLastName.Name = "lblLastName";
+            this.lblLastName.Size = new System.Drawing.Size(94, 22);
+            this.lblLastName.TabIndex = 6;
+            this.lblLastName.Text = "Last Name";
+            // 
+            // lblFirstName
+            // 
+            this.lblFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblFirstName.AutoSize = true;
+            this.lblFirstName.Location = new System.Drawing.Point(518, 164);
+            this.lblFirstName.Name = "lblFirstName";
+            this.lblFirstName.Size = new System.Drawing.Size(98, 22);
+            this.lblFirstName.TabIndex = 6;
+            this.lblFirstName.Text = "First Name";
             // 
             // groupBox1
             // 
@@ -181,10 +206,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtDepId);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.lblClassName);
-            this.groupBox1.Controls.Add(this.txtClassName);
-            this.groupBox1.Controls.Add(this.lblClassId);
-            this.groupBox1.Controls.Add(this.txtClassId);
+            this.groupBox1.Controls.Add(this.lblFirstName);
+            this.groupBox1.Controls.Add(this.txtLastName);
+            this.groupBox1.Controls.Add(this.txtFirstName);
+            this.groupBox1.Controls.Add(this.lblLastName);
+            this.groupBox1.Controls.Add(this.lblTeacherId);
+            this.groupBox1.Controls.Add(this.txtTeacherId);
             this.groupBox1.Controls.Add(this.cbbDep);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(0, 65);
@@ -195,7 +222,7 @@
             // 
             // txtDepId
             // 
-            this.txtDepId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsClass, "MAKH", true));
+            this.txtDepId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsTeacher, "MAKH", true));
             this.txtDepId.Enabled = false;
             this.txtDepId.Location = new System.Drawing.Point(188, 171);
             this.txtDepId.MenuManager = this.barManager1;
@@ -351,27 +378,38 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Dep ID";
             // 
-            // txtClassName
+            // txtLastName
             // 
-            this.txtClassName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtClassName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsClass, "TENLOP", true));
-            this.txtClassName.Location = new System.Drawing.Point(758, 165);
-            this.txtClassName.MenuManager = this.barManager1;
-            this.txtClassName.Name = "txtClassName";
-            this.txtClassName.Properties.MaxLength = 50;
-            this.txtClassName.Size = new System.Drawing.Size(235, 22);
-            this.txtClassName.TabIndex = 7;
+            this.txtLastName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtLastName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsTeacher, "TEN", true));
+            this.txtLastName.Location = new System.Drawing.Point(622, 165);
+            this.txtLastName.MenuManager = this.barManager1;
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Properties.MaxLength = 50;
+            this.txtLastName.Size = new System.Drawing.Size(188, 22);
+            this.txtLastName.TabIndex = 7;
             // 
-            // txtClassId
+            // txtFirstName
             // 
-            this.txtClassId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtClassId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsClass, "MALOP", true));
-            this.txtClassId.Location = new System.Drawing.Point(758, 123);
-            this.txtClassId.MenuManager = this.barManager1;
-            this.txtClassId.Name = "txtClassId";
-            this.txtClassId.Properties.MaxLength = 10;
-            this.txtClassId.Size = new System.Drawing.Size(235, 22);
-            this.txtClassId.TabIndex = 5;
+            this.txtFirstName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtFirstName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsTeacher, "HO", true));
+            this.txtFirstName.Location = new System.Drawing.Point(925, 165);
+            this.txtFirstName.MenuManager = this.barManager1;
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Properties.MaxLength = 50;
+            this.txtFirstName.Size = new System.Drawing.Size(158, 22);
+            this.txtFirstName.TabIndex = 7;
+            // 
+            // txtTeacherId
+            // 
+            this.txtTeacherId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtTeacherId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsTeacher, "MAGV", true));
+            this.txtTeacherId.Location = new System.Drawing.Point(632, 127);
+            this.txtTeacherId.MenuManager = this.barManager1;
+            this.txtTeacherId.Name = "txtTeacherId";
+            this.txtTeacherId.Properties.MaxLength = 10;
+            this.txtTeacherId.Size = new System.Drawing.Size(178, 22);
+            this.txtTeacherId.TabIndex = 5;
             // 
             // cbbDep
             // 
@@ -389,22 +427,22 @@
             this.label1.Font = new System.Drawing.Font("VNI-Jamai", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(53, 46);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 55);
+            this.label1.Size = new System.Drawing.Size(254, 55);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Class Info";
+            this.label1.Text = "Teacher Info";
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.lOPGridControl);
+            this.groupBox2.Controls.Add(this.gIANGVIENGridControl);
             this.groupBox2.Location = new System.Drawing.Point(0, 297);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1172, 289);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             // 
-            // frmClass
+            // frmTeacher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -418,19 +456,20 @@
             this.Controls.Add(this.barDockControlTop);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "frmClass";
+            this.Name = "frmTeacher";
             this.Text = "Class";
-            this.Load += new System.EventHandler(this.frmClass_Load);
+            this.Load += new System.EventHandler(this.frmTeacher_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsClass)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lOPGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsTeacher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gIANGVIENGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDepId.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClassName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtClassId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLastName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFirstName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTeacherId.Properties)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -440,10 +479,10 @@
         #endregion
 
         private dsQLDSV dsQLDSV;
-        private System.Windows.Forms.BindingSource bdsClass;
-        private dsQLDSVTableAdapters.LOPTableAdapter lOPTableAdapter;
+        private System.Windows.Forms.BindingSource bdsTeacher;
+        private dsQLDSVTableAdapters.GIANGVIENTableAdapter gIANGVIENTableAdapter;
         private dsQLDSVTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl lOPGridControl;
+        private DevExpress.XtraGrid.GridControl gIANGVIENGridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -464,12 +503,15 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraEditors.TextEdit txtClassName;
-        private DevExpress.XtraEditors.TextEdit txtClassId;
-        private System.Windows.Forms.Label lblClassId;
-        private System.Windows.Forms.Label lblClassName;
-        private DevExpress.XtraGrid.Columns.GridColumn ClassID;
-        private DevExpress.XtraGrid.Columns.GridColumn ClassName;
+        private DevExpress.XtraEditors.TextEdit txtFirstName;
+        private DevExpress.XtraEditors.TextEdit txtLastName;
+        private DevExpress.XtraEditors.TextEdit txtTeacherId;
+        private System.Windows.Forms.Label lblTeacherId;
+        private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Label lblLastName;
+        private DevExpress.XtraGrid.Columns.GridColumn TeacherID;
+        private DevExpress.XtraGrid.Columns.GridColumn FirstName;
+        private DevExpress.XtraGrid.Columns.GridColumn LastName;
         private DevExpress.XtraGrid.Columns.GridColumn DepID;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraEditors.TextEdit txtDepId;

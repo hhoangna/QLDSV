@@ -92,6 +92,12 @@
     <Compile Include="frmSubject.Designer.cs">
       <DependentUpon>frmSubject.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTeacher.Designer.cs">
+      <DependentUpon>frmTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmClass.resx">
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSubject.resx">
       <DependentUpon>frmSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTeacher.resx">
+      <DependentUpon>frmTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

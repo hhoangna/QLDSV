@@ -125,14 +125,14 @@ namespace QLDSV
 
         private void btnTeacher_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Form frm = this.CheckExists(typeof(frmTeacher));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmTeacher f = new frmTeacher();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
+            Form frm = this.CheckExists(typeof(frmTeacher));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmTeacher f = new frmTeacher();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnStudent_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

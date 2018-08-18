@@ -91,3 +91,4 @@ D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\bin\Debug\ja\DevExpress.Office.v16.1.Core.reso
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\bin\Debug\ru\DevExpress.Office.v16.1.Core.resources.dll
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmSubject.resources
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmClass.resources
+D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmTeacher.resources
