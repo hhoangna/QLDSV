@@ -15,8 +15,6 @@ namespace QLDSV
         int index;
         String method = "";
         String currentStudentID = "";
-        String classID = "";
-        String depID = "";
         public frmStudent()
         {
             InitializeComponent();
@@ -29,50 +27,13 @@ namespace QLDSV
             this.sp_DanhSachSinhVienTheoLopTableAdapter.Connection.ConnectionString = Program.connectStr;
             // TODO: This line of code loads data into the 'dataSetTracNghiem.SINHVIEN' table. You can move, or remove it, as needed.
 
-            initUIComboBoxDep();
+            getDataStudentFormClassID(Program.classSelected);
 
             groupBox1.Enabled = true;
             txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
                = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
 
             setCurrentRole();
-        }
-
-        public void initUIComboBoxDep()
-        {
-            cbbDep.DataSource = Program.bds;
-            cbbDep.DisplayMember = "MAKH";
-            cbbDep.ValueMember = "TENKH";
-            cbbDep.SelectedIndex = Program.currentBranch;
-
-            depID = Program.currentBranch == 0 ? "CNTT" : "VT";
-
-            initUIComboBoxClass();
-        }
-
-        public void initUIComboBoxClass()
-        {
-            String strLenh = "exec sp_DanhSachLopTheoKhoa'" + depID + "'";
-            DataTable dt = Program.ExecSqlDataTable(strLenh);
-            if (dt != null)
-            {
-                if (dt.Rows.Count == 0)
-                {
-                    cbbClass.SelectedIndex = -1;
-                    cbbClass.DataSource = null;
-                }
-                else
-                {
-                    cbbClass.DataSource = dt;
-                    cbbClass.DisplayMember = "TENLOP";
-                    cbbClass.ValueMember = "MALOP";
-                }
-                cbbClass.SelectedIndex = -1;
-            }
-            else
-            {
-                MessageBox.Show("Can not show list class", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         public void getDataStudentFormClassID(String classID)
@@ -90,12 +51,6 @@ namespace QLDSV
             setCurrentRole();
         }
 
-        public String getClassIDSelected()
-        {
-            classID = cbbClass.SelectedIndex >= 0 ? cbbClass.SelectedValue.ToString() : "";
-            return classID;
-        }
-
         public bool getStateGender()
         {
             return cbGender.CheckState == CheckState.Checked ? true : false;
@@ -104,39 +59,6 @@ namespace QLDSV
         public bool getStateAbsent()
         {
             return cbAbsent.CheckState == CheckState.Checked ? true : false;
-        }
-
-        private void cbbDep_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            if (cbbDep.SelectedValue != null)
-            {
-                if (cbbDep.SelectedValue.ToString() == "System.Data.DataRowView") return;
-                Program.serverName = cbbDep.SelectedValue.ToString();
-                Program.currentBranch = cbbDep.SelectedIndex;
-                depID = Program.currentBranch == 0 ? "CNTT" : "VT";
-
-                if (cbbDep.SelectedIndex != Program.currentBranch)
-                {
-                    Program.userName = Program.remoteLogin;
-                    Program.password = Program.remotePass;
-                }
-                else
-                {
-                    Program.userName = Program.currentUserName;
-                    Program.password = Program.currentPass;
-                }
-                if (Program.Connection() == 0)
-                    MessageBox.Show("Can not connect to new server", "Notification!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                {
-                    initUIComboBoxClass();
-                }
-            }
-        }
-
-        private void cbbClass_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            getDataStudentFormClassID(getClassIDSelected());
         }
 
         private void btnNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -148,8 +70,6 @@ namespace QLDSV
             cbAbsent.Enabled = cbGender.Enabled = true;
             dpBirthday.Format = DateTimePickerFormat.Custom;
             dpBirthday.CustomFormat = " ";
-            cbbDep.Enabled = false;
-            cbbClass.Enabled = false;
             groupBox2.Enabled = false;
             txtStudentId.Focus();
             method = Program.Method.New;
@@ -165,8 +85,6 @@ namespace QLDSV
             txtStudentId.Enabled = false;
             txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled = txtCountry.Enabled = true;
             cbAbsent.Enabled = cbGender.Enabled = true;
-            cbbDep.Enabled = false;
-            cbbClass.Enabled = false;
             groupBox2.Enabled = false;
             method = Program.Method.Update;
 
@@ -203,7 +121,7 @@ namespace QLDSV
                             this.Validate();
                             bdsStudentFromClass.EndEdit();
                             bdsStudentFromClass.ResetCurrentItem();
-                            this.sp_DanhSachSinhVienTheoLopTableAdapter.Insert(txtStudentId.Text, txtFistname.Text, txtLastname.Text, getClassIDSelected(), 
+                            this.sp_DanhSachSinhVienTheoLopTableAdapter.Insert(txtStudentId.Text, txtFistname.Text, txtLastname.Text, Program.classSelected, 
                                 getStateGender(), dpBirthday.Value.Date, txtCountry.Text, txtAddress.Text, getStateAbsent());
                         }
                         catch (Exception ex)
@@ -285,7 +203,7 @@ namespace QLDSV
                     {
                         MessageBox.Show("Failure. Please delete again!\n" + ex.Message, "",
                            MessageBoxButtons.OK);
-                        getDataStudentFormClassID(getClassIDSelected());
+                        getDataStudentFormClassID(Program.classSelected);
                         bdsStudentFromClass.Position = bdsStudentFromClass.Find("MASV", currentStudentID);
                         return;
                     }
@@ -303,19 +221,9 @@ namespace QLDSV
             if (bdsStudentFromClass.Count == 0) btnDel.Enabled = false;
             else btnDel.Enabled = true;
 
-            if (Program.currentRole == "PGV")
-            {
-                cbbDep.Enabled = true;
-                cbbClass.Enabled = true;
-            }
-            else
-            {
-                cbbDep.Enabled = false;
-                cbbClass.Enabled = true;
-            }
             groupBox2.Enabled = true;
             bdsStudentFromClass.MoveFirst();
-            getDataStudentFormClassID(getClassIDSelected());
+            getDataStudentFormClassID(Program.classSelected);
 
             btnNew.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
             btnSave.Enabled = btnCancel.Enabled = false;
@@ -327,7 +235,7 @@ namespace QLDSV
             txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
                = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
             bdsStudentFromClass.MoveFirst();
-            getDataStudentFormClassID(getClassIDSelected());
+            getDataStudentFormClassID(Program.classSelected);
             groupBox2.Enabled = true;
 
             setCurrentRole();
@@ -342,14 +250,10 @@ namespace QLDSV
         {
             if (Program.currentRole == "PGV")
             {
-                cbbDep.Enabled = true;
-                cbbClass.Enabled = true;
                 initButtonBarManage(true);
             }
             else
             {
-                cbbDep.Enabled = false;
-                cbbClass.Enabled = true;
                 btnNew.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
                 btnSave.Enabled = btnCancel.Enabled = false;
 

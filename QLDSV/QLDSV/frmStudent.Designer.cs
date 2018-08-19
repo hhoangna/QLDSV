@@ -38,7 +38,6 @@
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label nGHIHOCLabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtCountry = new DevExpress.XtraEditors.TextEdit();
             this.bdsStudentFromClass = new System.Windows.Forms.BindingSource(this.components);
             this.dsQLDSV = new QLDSV.dsQLDSV();
@@ -55,14 +54,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cbbClass = new System.Windows.Forms.ComboBox();
-            this.cbbDep = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbAbsent = new System.Windows.Forms.CheckBox();
             this.txtAddress = new DevExpress.XtraEditors.TextEdit();
             this.dpBirthday = new System.Windows.Forms.DateTimePicker();
-            this.cbGender = new System.Windows.Forms.CheckBox();
             this.txtLastname = new DevExpress.XtraEditors.TextEdit();
             this.txtFistname = new DevExpress.XtraEditors.TextEdit();
             this.txtStudentId = new DevExpress.XtraEditors.TextEdit();
@@ -72,7 +66,6 @@
             this.StudentId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.FirstName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LastName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ClassId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Gender = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Birthday = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Country = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -80,6 +73,8 @@
             this.Absent = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_DanhSachSinhVienTheoLopTableAdapter = new QLDSV.dsQLDSVTableAdapters.sp_DanhSachSinhVienTheoLopTableAdapter();
             this.tableAdapterManager = new QLDSV.dsQLDSVTableAdapters.TableAdapterManager();
+            this.cbGender = new System.Windows.Forms.CheckBox();
+            this.cbAbsent = new System.Windows.Forms.CheckBox();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -106,7 +101,7 @@
             // 
             mASVLabel.AutoSize = true;
             mASVLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            mASVLabel.Location = new System.Drawing.Point(266, 155);
+            mASVLabel.Location = new System.Drawing.Point(264, 114);
             mASVLabel.Name = "mASVLabel";
             mASVLabel.Size = new System.Drawing.Size(93, 22);
             mASVLabel.TabIndex = 0;
@@ -116,7 +111,7 @@
             // 
             hOLabel.AutoSize = true;
             hOLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            hOLabel.Location = new System.Drawing.Point(96, 202);
+            hOLabel.Location = new System.Drawing.Point(94, 161);
             hOLabel.Name = "hOLabel";
             hOLabel.Size = new System.Drawing.Size(98, 22);
             hOLabel.TabIndex = 2;
@@ -126,7 +121,7 @@
             // 
             tENLabel.AutoSize = true;
             tENLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            tENLabel.Location = new System.Drawing.Point(457, 202);
+            tENLabel.Location = new System.Drawing.Point(455, 161);
             tENLabel.Name = "tENLabel";
             tENLabel.Size = new System.Drawing.Size(94, 22);
             tENLabel.TabIndex = 4;
@@ -136,7 +131,7 @@
             // 
             pHAILabel1.AutoSize = true;
             pHAILabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            pHAILabel1.Location = new System.Drawing.Point(733, 202);
+            pHAILabel1.Location = new System.Drawing.Point(731, 161);
             pHAILabel1.Name = "pHAILabel1";
             pHAILabel1.Size = new System.Drawing.Size(68, 22);
             pHAILabel1.TabIndex = 10;
@@ -146,7 +141,7 @@
             // 
             nGAYSINHLabel.AutoSize = true;
             nGAYSINHLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nGAYSINHLabel.Location = new System.Drawing.Point(760, 161);
+            nGAYSINHLabel.Location = new System.Drawing.Point(758, 120);
             nGAYSINHLabel.Name = "nGAYSINHLabel";
             nGAYSINHLabel.Size = new System.Drawing.Size(78, 22);
             nGAYSINHLabel.TabIndex = 11;
@@ -156,7 +151,7 @@
             // 
             nOISINHLabel.AutoSize = true;
             nOISINHLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nOISINHLabel.Location = new System.Drawing.Point(122, 293);
+            nOISINHLabel.Location = new System.Drawing.Point(120, 252);
             nOISINHLabel.Name = "nOISINHLabel";
             nOISINHLabel.Size = new System.Drawing.Size(72, 22);
             nOISINHLabel.TabIndex = 12;
@@ -166,7 +161,7 @@
             // 
             dIACHILabel.AutoSize = true;
             dIACHILabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dIACHILabel.Location = new System.Drawing.Point(118, 250);
+            dIACHILabel.Location = new System.Drawing.Point(116, 209);
             dIACHILabel.Name = "dIACHILabel";
             dIACHILabel.Size = new System.Drawing.Size(76, 22);
             dIACHILabel.TabIndex = 14;
@@ -176,7 +171,7 @@
             // 
             nGHIHOCLabel.AutoSize = true;
             nGHIHOCLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            nGHIHOCLabel.Location = new System.Drawing.Point(917, 202);
+            nGHIHOCLabel.Location = new System.Drawing.Point(915, 161);
             nGHIHOCLabel.Name = "nGHIHOCLabel";
             nGHIHOCLabel.Size = new System.Drawing.Size(65, 22);
             nGHIHOCLabel.TabIndex = 16;
@@ -186,21 +181,17 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbAbsent);
+            this.groupBox1.Controls.Add(this.cbGender);
             this.groupBox1.Controls.Add(this.txtCountry);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(nOISINHLabel);
-            this.groupBox1.Controls.Add(this.cbbClass);
-            this.groupBox1.Controls.Add(this.cbbDep);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(nGHIHOCLabel);
-            this.groupBox1.Controls.Add(this.cbAbsent);
             this.groupBox1.Controls.Add(dIACHILabel);
             this.groupBox1.Controls.Add(this.txtAddress);
             this.groupBox1.Controls.Add(nGAYSINHLabel);
             this.groupBox1.Controls.Add(this.dpBirthday);
             this.groupBox1.Controls.Add(pHAILabel1);
-            this.groupBox1.Controls.Add(this.cbGender);
             this.groupBox1.Controls.Add(tENLabel);
             this.groupBox1.Controls.Add(this.txtLastname);
             this.groupBox1.Controls.Add(hOLabel);
@@ -209,24 +200,14 @@
             this.groupBox1.Controls.Add(this.txtStudentId);
             this.groupBox1.Location = new System.Drawing.Point(0, 65);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1196, 339);
+            this.groupBox1.Size = new System.Drawing.Size(1145, 306);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(165, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 22);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "Dep";
             // 
             // txtCountry
             // 
             this.txtCountry.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "NOISINH", true));
-            this.txtCountry.Location = new System.Drawing.Point(200, 290);
+            this.txtCountry.Location = new System.Drawing.Point(198, 249);
             this.txtCountry.MenuManager = this.barManager1;
             this.txtCountry.Name = "txtCountry";
             this.txtCountry.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -340,14 +321,14 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(1196, 59);
+            this.barDockControlTop.Size = new System.Drawing.Size(1145, 59);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 684);
-            this.barDockControlBottom.Size = new System.Drawing.Size(1196, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1145, 0);
             // 
             // barDockControlLeft
             // 
@@ -360,40 +341,8 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1196, 59);
+            this.barDockControlRight.Location = new System.Drawing.Point(1145, 59);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 625);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(623, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 22);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Class";
-            // 
-            // cbbClass
-            // 
-            this.cbbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbClass.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbClass.FormattingEnabled = true;
-            this.cbbClass.Location = new System.Drawing.Point(683, 90);
-            this.cbbClass.Name = "cbbClass";
-            this.cbbClass.Size = new System.Drawing.Size(245, 30);
-            this.cbbClass.TabIndex = 20;
-            this.cbbClass.SelectionChangeCommitted += new System.EventHandler(this.cbbClass_SelectionChangeCommitted);
-            // 
-            // cbbDep
-            // 
-            this.cbbDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbDep.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbDep.FormattingEnabled = true;
-            this.cbbDep.Location = new System.Drawing.Point(214, 90);
-            this.cbbDep.Name = "cbbDep";
-            this.cbbDep.Size = new System.Drawing.Size(316, 30);
-            this.cbbDep.TabIndex = 19;
-            this.cbbDep.SelectionChangeCommitted += new System.EventHandler(this.cbbDep_SelectionChangeCommitted);
             // 
             // label1
             // 
@@ -405,20 +354,10 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Student Info";
             // 
-            // cbAbsent
-            // 
-            this.cbAbsent.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "NGHIHOC", true));
-            this.cbAbsent.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAbsent.Location = new System.Drawing.Point(988, 202);
-            this.cbAbsent.Name = "cbAbsent";
-            this.cbAbsent.Size = new System.Drawing.Size(33, 24);
-            this.cbAbsent.TabIndex = 17;
-            this.cbAbsent.UseVisualStyleBackColor = true;
-            // 
             // txtAddress
             // 
             this.txtAddress.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "DIACHI", true));
-            this.txtAddress.Location = new System.Drawing.Point(200, 247);
+            this.txtAddress.Location = new System.Drawing.Point(198, 206);
             this.txtAddress.MenuManager = this.barManager1;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -431,27 +370,16 @@
             this.dpBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.bdsStudentFromClass, "NGAYSINH", true));
             this.dpBirthday.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dpBirthday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpBirthday.Location = new System.Drawing.Point(844, 155);
+            this.dpBirthday.Location = new System.Drawing.Point(842, 114);
             this.dpBirthday.Name = "dpBirthday";
             this.dpBirthday.Size = new System.Drawing.Size(157, 30);
             this.dpBirthday.TabIndex = 12;
             this.dpBirthday.ValueChanged += new System.EventHandler(this.pickerBirthday_ValueChanged);
             // 
-            // cbGender
-            // 
-            this.cbGender.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "PHAI", true));
-            this.cbGender.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGender.Location = new System.Drawing.Point(807, 202);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(104, 24);
-            this.cbGender.TabIndex = 11;
-            this.cbGender.Text = "Male";
-            this.cbGender.UseVisualStyleBackColor = true;
-            // 
             // txtLastname
             // 
             this.txtLastname.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "TEN", true));
-            this.txtLastname.Location = new System.Drawing.Point(554, 199);
+            this.txtLastname.Location = new System.Drawing.Point(552, 158);
             this.txtLastname.MenuManager = this.barManager1;
             this.txtLastname.Name = "txtLastname";
             this.txtLastname.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -463,7 +391,7 @@
             // txtFistname
             // 
             this.txtFistname.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "HO", true));
-            this.txtFistname.Location = new System.Drawing.Point(200, 199);
+            this.txtFistname.Location = new System.Drawing.Point(198, 158);
             this.txtFistname.MenuManager = this.barManager1;
             this.txtFistname.Name = "txtFistname";
             this.txtFistname.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -475,7 +403,7 @@
             // txtStudentId
             // 
             this.txtStudentId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "MASV", true));
-            this.txtStudentId.Location = new System.Drawing.Point(364, 152);
+            this.txtStudentId.Location = new System.Drawing.Point(362, 111);
             this.txtStudentId.MenuManager = this.barManager1;
             this.txtStudentId.Name = "txtStudentId";
             this.txtStudentId.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -489,9 +417,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.sp_DanhSachSinhVienTheoLopGridControl);
-            this.groupBox2.Location = new System.Drawing.Point(0, 410);
+            this.groupBox2.Location = new System.Drawing.Point(0, 377);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1196, 273);
+            this.groupBox2.Size = new System.Drawing.Size(1145, 306);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
@@ -501,10 +429,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.sp_DanhSachSinhVienTheoLopGridControl.DataSource = this.bdsStudentFromClass;
-            this.sp_DanhSachSinhVienTheoLopGridControl.Location = new System.Drawing.Point(0, 21);
+            this.sp_DanhSachSinhVienTheoLopGridControl.Location = new System.Drawing.Point(0, 12);
             this.sp_DanhSachSinhVienTheoLopGridControl.MainView = this.gridView1;
             this.sp_DanhSachSinhVienTheoLopGridControl.Name = "sp_DanhSachSinhVienTheoLopGridControl";
-            this.sp_DanhSachSinhVienTheoLopGridControl.Size = new System.Drawing.Size(1196, 302);
+            this.sp_DanhSachSinhVienTheoLopGridControl.Size = new System.Drawing.Size(1145, 294);
             this.sp_DanhSachSinhVienTheoLopGridControl.TabIndex = 0;
             this.sp_DanhSachSinhVienTheoLopGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -515,7 +443,6 @@
             this.StudentId,
             this.FirstName,
             this.LastName,
-            this.ClassId,
             this.Gender,
             this.Birthday,
             this.Country,
@@ -556,16 +483,6 @@
             this.LastName.Visible = true;
             this.LastName.VisibleIndex = 2;
             // 
-            // ClassId
-            // 
-            this.ClassId.Caption = "Class Id";
-            this.ClassId.FieldName = "MALOP";
-            this.ClassId.Name = "ClassId";
-            this.ClassId.OptionsColumn.AllowEdit = false;
-            this.ClassId.OptionsColumn.ReadOnly = true;
-            this.ClassId.Visible = true;
-            this.ClassId.VisibleIndex = 3;
-            // 
             // Gender
             // 
             this.Gender.Caption = "Gender";
@@ -574,7 +491,7 @@
             this.Gender.OptionsColumn.AllowEdit = false;
             this.Gender.OptionsColumn.ReadOnly = true;
             this.Gender.Visible = true;
-            this.Gender.VisibleIndex = 4;
+            this.Gender.VisibleIndex = 3;
             // 
             // Birthday
             // 
@@ -584,7 +501,7 @@
             this.Birthday.OptionsColumn.AllowEdit = false;
             this.Birthday.OptionsColumn.ReadOnly = true;
             this.Birthday.Visible = true;
-            this.Birthday.VisibleIndex = 5;
+            this.Birthday.VisibleIndex = 4;
             // 
             // Country
             // 
@@ -594,7 +511,7 @@
             this.Country.OptionsColumn.AllowEdit = false;
             this.Country.OptionsColumn.ReadOnly = true;
             this.Country.Visible = true;
-            this.Country.VisibleIndex = 6;
+            this.Country.VisibleIndex = 5;
             // 
             // Address
             // 
@@ -604,7 +521,7 @@
             this.Address.OptionsColumn.AllowEdit = false;
             this.Address.OptionsColumn.ReadOnly = true;
             this.Address.Visible = true;
-            this.Address.VisibleIndex = 7;
+            this.Address.VisibleIndex = 6;
             // 
             // Absent
             // 
@@ -614,7 +531,7 @@
             this.Absent.OptionsColumn.AllowEdit = false;
             this.Absent.OptionsColumn.ReadOnly = true;
             this.Absent.Visible = true;
-            this.Absent.VisibleIndex = 8;
+            this.Absent.VisibleIndex = 7;
             // 
             // sp_DanhSachSinhVienTheoLopTableAdapter
             // 
@@ -632,11 +549,32 @@
             this.tableAdapterManager.sp_DanhSachSinhVienTheoLopTableAdapter = this.sp_DanhSachSinhVienTheoLopTableAdapter;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // cbGender
+            // 
+            this.cbGender.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "PHAI", true));
+            this.cbGender.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGender.Location = new System.Drawing.Point(805, 161);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(80, 24);
+            this.cbGender.TabIndex = 18;
+            this.cbGender.Text = "Male";
+            this.cbGender.UseVisualStyleBackColor = true;
+            // 
+            // cbAbsent
+            // 
+            this.cbAbsent.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "NGHIHOC", true));
+            this.cbAbsent.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAbsent.Location = new System.Drawing.Point(986, 161);
+            this.cbAbsent.Name = "cbAbsent";
+            this.cbAbsent.Size = new System.Drawing.Size(33, 24);
+            this.cbAbsent.TabIndex = 19;
+            this.cbAbsent.UseVisualStyleBackColor = true;
+            // 
             // frmStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1196, 684);
+            this.ClientSize = new System.Drawing.Size(1145, 684);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.barDockControlLeft);
@@ -677,7 +615,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn StudentId;
         private DevExpress.XtraGrid.Columns.GridColumn LastName;
         private DevExpress.XtraGrid.Columns.GridColumn FirstName;
-        private DevExpress.XtraGrid.Columns.GridColumn ClassId;
         private DevExpress.XtraGrid.Columns.GridColumn Gender;
         private DevExpress.XtraGrid.Columns.GridColumn Birthday;
         private DevExpress.XtraGrid.Columns.GridColumn Country;
@@ -696,18 +633,14 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbbClass;
-        private System.Windows.Forms.ComboBox cbbDep;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbAbsent;
         private DevExpress.XtraEditors.TextEdit txtAddress;
         private DevExpress.XtraEditors.TextEdit txtCountry;
         private System.Windows.Forms.DateTimePicker dpBirthday;
-        private System.Windows.Forms.CheckBox cbGender;
         private DevExpress.XtraEditors.TextEdit txtLastname;
         private DevExpress.XtraEditors.TextEdit txtFistname;
         private DevExpress.XtraEditors.TextEdit txtStudentId;
+        private System.Windows.Forms.CheckBox cbAbsent;
+        private System.Windows.Forms.CheckBox cbGender;
     }
 }
