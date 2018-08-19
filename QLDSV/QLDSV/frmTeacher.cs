@@ -449,32 +449,24 @@ namespace QLDSV
 
         private String checkExistData(string teacherId, string method)
         {
-            String result = "";
             String sqlStr = "";
 
-            try
+            if (Program.connect.State == ConnectionState.Closed)
             {
                 Program.connect.Open();
-                sqlStr = "sp_KiemTraGiangVien";
-                Program.cmd = Program.connect.CreateCommand();
-                Program.cmd.CommandType = CommandType.StoredProcedure;
-                Program.cmd.CommandText = sqlStr;
+            }
+            sqlStr = "sp_KiemTraGiangVien";
+            Program.cmd = Program.connect.CreateCommand();
+            Program.cmd.CommandType = CommandType.StoredProcedure;
+            Program.cmd.CommandText = sqlStr;
 
-                Program.cmd.Parameters.Add("@MAGV", SqlDbType.NChar).Value = teacherId;
-                Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
-                Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.VarChar).Direction = ParameterDirection.ReturnValue;
-                Program.cmd.ExecuteNonQuery();
-            }
-            catch
-            {
-                Console.Write("Error");
-            }
-            finally
-            {
-                Program.connect.Close();
+            Program.cmd.Parameters.Add("@MAGV", SqlDbType.NChar).Value = teacherId;
+            Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
+            Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+            Program.cmd.ExecuteNonQuery();
+            String result = Program.cmd.Parameters["@ReturnValue"].Value.ToString();
 
-                result = Program.cmd.Parameters["@ReturnValue"].Value.ToString();
-            }
+            Program.connect.Close();
             return result;
         }
 

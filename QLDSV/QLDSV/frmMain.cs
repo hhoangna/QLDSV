@@ -87,18 +87,6 @@ namespace QLDSV
             ribReport.Visible = isVisible;
         }
 
-        private void btnDep_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmDep));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmDep f = new frmDep();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
-        }
-
         private void btnSubject_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form frm = this.CheckExists(typeof(frmSubject));
@@ -137,14 +125,14 @@ namespace QLDSV
 
         private void btnStudent_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Form frm = this.CheckExists(typeof(frmStudent));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmStudent f = new frmStudent();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
+            Form frm = this.CheckExists(typeof(frmStudent));
+            if (frm != null) frm.Activate();
+            else
+            {
+                frmStudent f = new frmStudent();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
 
         private void btnExam_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

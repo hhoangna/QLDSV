@@ -155,8 +155,10 @@ namespace QLDSV
         private String checkExistData(String subId, string method, string subName)
         {
             String sqlStr = "";
-            Program.connect.Open();
-
+            if (Program.connect.State == ConnectionState.Closed)
+            {
+                Program.connect.Open();
+            }
             sqlStr = "sp_KiemTraMonHoc";
             Program.cmd = Program.connect.CreateCommand();
             Program.cmd.CommandType = CommandType.StoredProcedure;
@@ -165,12 +167,11 @@ namespace QLDSV
             Program.cmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = subId;
             Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
             Program.cmd.Parameters.Add("@TENMH", SqlDbType.NVarChar).Value = subName;
-            Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.VarChar).Direction = ParameterDirection.ReturnValue;
+            Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
             Program.cmd.ExecuteNonQuery();
-            Program.connect.Close();
-
             String result = Program.cmd.Parameters["@ReturnValue"].Value.ToString();
 
+            Program.connect.Close();
             return result;
         }
 

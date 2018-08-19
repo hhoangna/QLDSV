@@ -22,21 +22,21 @@ namespace QLDSV
         // Stack Undo
         public Stack stUndo = new Stack();
         public Stack stRedo = new Stack();
-        public DepDto dtoUndo = new DepDto("", "", "");
+        public ClassDto dtoUndo = new ClassDto("", "", "");
         public bool isUndo = false;
         public bool isRedo = false;
 
 
-        public class DepDto
+        public class ClassDto
         {
-            public String strDepID;
-            public String strDepName;
+            public String strClassID;
+            public String strClassName;
             public String method;
             public int index;
-            public DepDto(String depID, String depName, String strMethod)
+            public ClassDto(String depID, String depName, String strMethod)
             {
-                strDepID = depID;
-                strDepName = depName;
+                strClassID = depID;
+                strClassName = depName;
                 method = strMethod;
             }
         }
@@ -169,8 +169,8 @@ namespace QLDSV
             currentClassName = ((DataRowView)bdsClass[index])["TENLOP"].ToString();
             currentClassID = ((DataRowView)bdsClass[index])["MALOP"].ToString();
 
-            dtoUndo.strDepID = currentClassID;
-            dtoUndo.strDepName = currentClassName;
+            dtoUndo.strClassID = currentClassID;
+            dtoUndo.strClassName = currentClassName;
 
             btnCancel.Enabled = btnSave.Enabled = true;
             btnDel.Enabled = btnNew.Enabled = btnRefresh.Enabled = btnEdit.Enabled = false;
@@ -203,23 +203,23 @@ namespace QLDSV
             btnSave.Enabled = btnCancel.Enabled = false;
         }
 
-        public void sqlNewMethod(String strDepID, String strDepName, String method)
+        public void sqlNewMethod(String strClassID, String strClassName, String method)
         {
-            string result = checkExistData(strDepID, method, strDepName);
+            string result = checkExistData(strClassID, method, strClassName);
 
             if (result == "-1")
             {
-                MessageBox.Show("The " + strDepID + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The " + strClassID + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else if (result == "1")
             {
-                MessageBox.Show("The " + strDepName + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The " + strClassName + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
-                if (strDepID.Length == 0 || strDepName.Length == 0)
+                if (strClassID.Length == 0 || strClassName.Length == 0)
                 {
                     MessageBox.Show("ClassID or ClassName can not empty!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -234,7 +234,7 @@ namespace QLDSV
                         this.lOPTableAdapter.Update(this.dsQLDSV.LOP);
                         if (isUndo == false)
                         {
-                            DepDto dataUndo = new DepDto(strDepID, strDepName, method);
+                            ClassDto dataUndo = new ClassDto(strClassID, strClassName, method);
                             stUndo.Push(dataUndo);
                             updateUIUndo();
                         }
@@ -249,13 +249,13 @@ namespace QLDSV
             }
         }
 
-        public void sqlUpdateMethod(String strDepID, String strDepName, String method)
+        public void sqlUpdateMethod(String strClassID, String strClassName, String method)
         {
-            string result = checkExistData(strDepID, method, strDepName);
+            string result = checkExistData(strClassID, method, strClassName);
 
             if (result == "1")
             {
-                MessageBox.Show("The " + strDepName + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The " + strClassName + " has already exists!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -275,7 +275,7 @@ namespace QLDSV
                         this.lOPTableAdapter.Update(this.dsQLDSV.LOP);
                         if (isUndo == false)
                         {
-                            DepDto dataUndo = new DepDto(dtoUndo.strDepID, dtoUndo.strDepName, method);
+                            ClassDto dataUndo = new ClassDto(dtoUndo.strClassID, dtoUndo.strClassName, method);
                             stUndo.Push(dataUndo);
                             updateUIUndo();
                         }
@@ -289,18 +289,18 @@ namespace QLDSV
             }
         }
 
-        public void sqlDeleteMethod(String strDepID, String strDepName, String method)
+        public void sqlDeleteMethod(String strClassID, String strClassName, String method)
         {
-            string result = checkExistData(strDepID, method, strDepName);
+            string result = checkExistData(strClassID, method, strClassName);
 
             if (result == "-1")
             {
-                MessageBox.Show("Can not delete " + strDepName + " class. \nThe class has students available! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Can not delete " + strClassName + " class. \nThe class has students available! ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
             else
             {
-                if (MessageBox.Show("Do you want to delete " + strDepName + " class?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Do you want to delete " + strClassName + " class?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     try
                     {
@@ -308,7 +308,7 @@ namespace QLDSV
                         this.lOPTableAdapter.Update(this.dsQLDSV.LOP);
                         if (isUndo == false)
                         {
-                            DepDto dataUndo = new DepDto(strDepID, strDepName, method);
+                            ClassDto dataUndo = new ClassDto(strClassID, strClassName, method);
                             stUndo.Push(dataUndo);
                             updateUIUndo();
                         }
@@ -318,7 +318,7 @@ namespace QLDSV
                         MessageBox.Show("Failure. Please delete again!\n" + ex.Message, "",
                             MessageBoxButtons.OK);
                         this.lOPTableAdapter.Fill(this.dsQLDSV.LOP);
-                        bdsClass.Position = bdsClass.Find("MAKH", strDepID);
+                        bdsClass.Position = bdsClass.Find("MAKH", strClassID);
                         return;
                     }
                 }
@@ -373,28 +373,28 @@ namespace QLDSV
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             isUndo = true;
-            DepDto dataUndo = (DepDto)stUndo.Pop();
+            ClassDto dataUndo = (ClassDto)stUndo.Pop();
             if (dataUndo.method == Program.Method.New)
             {
                 stRedo.Push(dataUndo);
-                int index = getIndexDBS(dataUndo.strDepID);
+                int index = getIndexDBS(dataUndo.strClassID);
                 if (index >= 0)
                 {
                     bdsClass.Position = index;
-                    sqlDeleteMethod(dataUndo.strDepID, dataUndo.strDepName, Program.Method.Delete);
+                    sqlDeleteMethod(dataUndo.strClassID, dataUndo.strClassName, Program.Method.Delete);
                 }
             }
             else if (dataUndo.method == Program.Method.Update)
             {
-                int index = getIndexDBS(dataUndo.strDepID);
+                int index = getIndexDBS(dataUndo.strClassID);
                 if (index >= 0)
                 {
-                    DepDto dataRedo = new DepDto(txtClassId.Text, txtClassName.Text, method);
+                    ClassDto dataRedo = new ClassDto(txtClassId.Text, txtClassName.Text, method);
                     stRedo.Push(dataRedo);
                     bdsClass.Position = index;
-                    txtClassName.Text = dataUndo.strDepName;
-                    txtClassId.Text = dataUndo.strDepID;
-                    sqlUpdateMethod(dataUndo.strDepID, dataUndo.strDepName, method);
+                    txtClassName.Text = dataUndo.strClassName;
+                    txtClassId.Text = dataUndo.strClassID;
+                    sqlUpdateMethod(dataUndo.strClassID, dataUndo.strClassName, method);
                 }
 
             }
@@ -403,9 +403,9 @@ namespace QLDSV
                 stRedo.Push(dataUndo);
                 bdsClass.AddNew();
                 txtDepId.Text = depID;
-                txtClassName.Text = dataUndo.strDepName;
-                txtClassId.Text = dataUndo.strDepID;
-                sqlNewMethod(dataUndo.strDepID, dataUndo.strDepName, Program.Method.New);
+                txtClassName.Text = dataUndo.strClassName;
+                txtClassId.Text = dataUndo.strClassID;
+                sqlNewMethod(dataUndo.strClassID, dataUndo.strClassName, Program.Method.New);
             }
             isUndo = false;
             updateUIUndo();
@@ -414,38 +414,38 @@ namespace QLDSV
         private void btnRedo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             isRedo = isUndo = true;
-            DepDto dataRedo = (DepDto)stRedo.Pop();
+            ClassDto dataRedo = (ClassDto)stRedo.Pop();
             if (dataRedo.method == Program.Method.New)
             {
                 stUndo.Push(dataRedo);
                 bdsClass.AddNew();
                 txtDepId.Text = depID;
-                txtClassName.Text = dataRedo.strDepName;
-                txtClassId.Text = dataRedo.strDepID;
-                sqlNewMethod(dataRedo.strDepID, dataRedo.strDepName, Program.Method.New);
+                txtClassName.Text = dataRedo.strClassName;
+                txtClassId.Text = dataRedo.strClassID;
+                sqlNewMethod(dataRedo.strClassID, dataRedo.strClassName, Program.Method.New);
             }
             else if (dataRedo.method == Program.Method.Update)
             {
-                int index = getIndexDBS(dataRedo.strDepID);
+                int index = getIndexDBS(dataRedo.strClassID);
                 if (index >= 0)
                 {
-                    DepDto dataUndo = new DepDto(txtClassId.Text, txtClassName.Text, method);
+                    ClassDto dataUndo = new ClassDto(txtClassId.Text, txtClassName.Text, method);
                     stUndo.Push(dataUndo);
                     bdsClass.Position = index;
-                    txtClassName.Text = dataRedo.strDepName;
-                    txtClassId.Text = dataRedo.strDepID;
-                    sqlUpdateMethod(dataRedo.strDepID, dataRedo.strDepName, method);
+                    txtClassName.Text = dataRedo.strClassName;
+                    txtClassId.Text = dataRedo.strClassID;
+                    sqlUpdateMethod(dataRedo.strClassID, dataRedo.strClassName, method);
                 }
 
             }
             else if (dataRedo.method == Program.Method.Delete)
             {
                 stUndo.Push(dataRedo);
-                int index = getIndexDBS(dataRedo.strDepID);
+                int index = getIndexDBS(dataRedo.strClassID);
                 if (index >= 0)
                 {
                     bdsClass.Position = index;
-                    sqlDeleteMethod(dataRedo.strDepID, dataRedo.strDepName, Program.Method.Delete);
+                    sqlDeleteMethod(dataRedo.strClassID, dataRedo.strClassName, Program.Method.Delete);
                 }
             }
             isRedo = isUndo = false;
@@ -454,41 +454,34 @@ namespace QLDSV
 
         private String checkExistData(string classId, string method, string className)
         {
-            String result = "";
             String sqlStr = "";
-            
-            try
+
+            if (Program.connect.State == ConnectionState.Closed)
             {
                 Program.connect.Open();
-                sqlStr = "sp_KiemTraLop";
-                Program.cmd = Program.connect.CreateCommand();
-                Program.cmd.CommandType = CommandType.StoredProcedure;
-                Program.cmd.CommandText = sqlStr;
+            }
+            
+            sqlStr = "sp_KiemTraLop";
+            Program.cmd = Program.connect.CreateCommand();
+            Program.cmd.CommandType = CommandType.StoredProcedure;
+            Program.cmd.CommandText = sqlStr;
 
-                Program.cmd.Parameters.Add("@MALOP", SqlDbType.NChar).Value = classId;
-                Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
-                Program.cmd.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = className;
-                Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.VarChar).Direction = ParameterDirection.ReturnValue;
-                Program.cmd.ExecuteNonQuery();
-            }
-            catch
-            {
-                Console.Write("Error");
-            }
-            finally
-            {
-                Program.connect.Close();
+            Program.cmd.Parameters.Add("@MALOP", SqlDbType.NChar).Value = classId;
+            Program.cmd.Parameters.Add("@METHOD", SqlDbType.NChar).Value = method;
+            Program.cmd.Parameters.Add("@TENLOP", SqlDbType.NVarChar).Value = className;
+            Program.cmd.Parameters.Add("@ReturnValue", SqlDbType.Int).Direction = ParameterDirection.ReturnValue;
+            Program.cmd.ExecuteNonQuery();
+            String result = Program.cmd.Parameters["@ReturnValue"].Value.ToString();
 
-                result = Program.cmd.Parameters["@ReturnValue"].Value.ToString();
-            }
+            Program.connect.Close();
             return result;
         }
 
-        public int getIndexDBS(string strDepID)
+        public int getIndexDBS(string strClassID)
         {
             for (int i = 0; i < bdsClass.Count; i++)
             {
-                if (strDepID.Trim() == ((DataRowView)bdsClass[i])["MALOP"].ToString().Trim())
+                if (strClassID.Trim() == ((DataRowView)bdsClass[i])["MALOP"].ToString().Trim())
                 {
                     return i;
                 }

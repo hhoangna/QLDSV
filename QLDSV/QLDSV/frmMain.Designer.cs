@@ -34,7 +34,6 @@
             this.btnLogin = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.btnExit = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDep = new DevExpress.XtraBars.BarButtonItem();
             this.btnCLass = new DevExpress.XtraBars.BarButtonItem();
             this.btnTeacher = new DevExpress.XtraBars.BarButtonItem();
             this.btnSubject = new DevExpress.XtraBars.BarButtonItem();
@@ -82,7 +81,6 @@
             this.btnLogin,
             this.btnLogout,
             this.btnExit,
-            this.btnDep,
             this.btnCLass,
             this.btnTeacher,
             this.btnStudent,
@@ -130,14 +128,6 @@
             this.btnExit.LargeGlyph = global::QLDSV.Properties.Resources.icons8_Shutdown_32;
             this.btnExit.Name = "btnExit";
             this.btnExit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExit_ItemClick);
-            // 
-            // btnDep
-            // 
-            this.btnDep.Caption = "Department";
-            this.btnDep.Id = 4;
-            this.btnDep.LargeGlyph = global::QLDSV.Properties.Resources.icons8_department;
-            this.btnDep.Name = "btnDep";
-            this.btnDep.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDep_ItemClick);
             // 
             // btnCLass
             // 
@@ -247,7 +237,6 @@
             // 
             // ribbonManaGroup
             // 
-            this.ribbonManaGroup.ItemLinks.Add(this.btnDep);
             this.ribbonManaGroup.ItemLinks.Add(this.btnCLass);
             this.ribbonManaGroup.ItemLinks.Add(this.btnTeacher);
             this.ribbonManaGroup.ItemLinks.Add(this.btnStudent);
@@ -367,7 +356,6 @@
         public System.Windows.Forms.ToolStripStatusLabel userID;
         public System.Windows.Forms.ToolStripStatusLabel userName;
         public System.Windows.Forms.ToolStripStatusLabel userRole;
-        private DevExpress.XtraBars.BarButtonItem btnDep;
         private DevExpress.XtraBars.BarButtonItem btnCLass;
         private DevExpress.XtraBars.BarButtonItem btnTeacher;
         private DevExpress.XtraBars.BarButtonItem btnSubject;

@@ -93,6 +93,7 @@
             this.tableAdapterManager.LOPTableAdapter = this.lOPTableAdapter;
             this.tableAdapterManager.MONHOCTableAdapter = null;
             this.tableAdapterManager.SINHVIENTableAdapter = null;
+            this.tableAdapterManager.sp_DanhSachSinhVienTheoLopTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // bdsClass
@@ -197,10 +198,12 @@
             // 
             this.txtDepId.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsClass, "MAKH", true));
             this.txtDepId.Enabled = false;
-            this.txtDepId.Location = new System.Drawing.Point(188, 171);
+            this.txtDepId.Location = new System.Drawing.Point(226, 174);
             this.txtDepId.MenuManager = this.barManager1;
             this.txtDepId.Name = "txtDepId";
-            this.txtDepId.Size = new System.Drawing.Size(137, 22);
+            this.txtDepId.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDepId.Properties.Appearance.Options.UseFont = true;
+            this.txtDepId.Size = new System.Drawing.Size(137, 28);
             this.txtDepId.TabIndex = 9;
             // 
             // barManager1
@@ -345,7 +348,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(97, 170);
+            this.label2.Location = new System.Drawing.Point(135, 173);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(68, 22);
             this.label2.TabIndex = 8;
@@ -358,8 +361,10 @@
             this.txtClassName.Location = new System.Drawing.Point(758, 165);
             this.txtClassName.MenuManager = this.barManager1;
             this.txtClassName.Name = "txtClassName";
+            this.txtClassName.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClassName.Properties.Appearance.Options.UseFont = true;
             this.txtClassName.Properties.MaxLength = 50;
-            this.txtClassName.Size = new System.Drawing.Size(235, 22);
+            this.txtClassName.Size = new System.Drawing.Size(235, 28);
             this.txtClassName.TabIndex = 7;
             // 
             // txtClassId
@@ -369,8 +374,10 @@
             this.txtClassId.Location = new System.Drawing.Point(758, 123);
             this.txtClassId.MenuManager = this.barManager1;
             this.txtClassId.Name = "txtClassId";
+            this.txtClassId.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtClassId.Properties.Appearance.Options.UseFont = true;
             this.txtClassId.Properties.MaxLength = 10;
-            this.txtClassId.Size = new System.Drawing.Size(235, 22);
+            this.txtClassId.Size = new System.Drawing.Size(235, 28);
             this.txtClassId.TabIndex = 5;
             // 
             // cbbDep
@@ -387,7 +394,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("VNI-Jamai", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(53, 46);
+            this.label1.Location = new System.Drawing.Point(144, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(206, 55);
             this.label1.TabIndex = 2;
