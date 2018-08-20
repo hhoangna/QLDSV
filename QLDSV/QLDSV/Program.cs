@@ -28,6 +28,7 @@ namespace QLDSV
         public static String currentRole = "";
         public static int currentBranch = 0;
         public static String classSelected = "";
+        public static String className = "";
 
         public static String databaseName = "QLDSV";
         public static String remoteLogin = "SUPPORT";

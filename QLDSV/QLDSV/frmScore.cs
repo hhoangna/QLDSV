@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 
 namespace QLDSV
 {
@@ -15,7 +16,6 @@ namespace QLDSV
         String subjectId = "";
         int time;
         bool enable;
-        bool isChanged = false;
         public class ScoreItem
         {
             public string studentId;
@@ -169,7 +169,7 @@ namespace QLDSV
 
         private void getStateButtonNew()
         {
-            btnShow.Enabled = enable;
+            btnShow.Enabled = btnPrint.Enabled = enable;
         }
 
         private void txtTime_TextChanged(object sender, EventArgs e)
@@ -186,7 +186,6 @@ namespace QLDSV
                 string valueS = txtScore.Text;
                 double value = Convert.ToDouble(valueS);
                 updateScore(index, value);
-                isChanged = true;
             }
         }
 
@@ -212,6 +211,16 @@ namespace QLDSV
 
             lbScore.Items.Clear();
             listScore.Clear();
+        }
+
+        private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rpListScoreFromSubject rpt = new rpListScoreFromSubject(Program.classSelected, getSubjectIdSelected(), getTime());
+            rpt.lblClassId.Text = "Lớp: " + Program.className;
+            rpt.lblSubjectId.Text = "Môn: " + cbbSubject.Text;
+            rpt.lblTime.Text = "Lần: " + getTime();
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
         }
     }
 }

@@ -57,6 +57,7 @@
             this.mONHOCTableAdapter = new QLDSV.dsQLDSVTableAdapters.MONHOCTableAdapter();
             this.sp_DanhSachDiemTableAdapter = new QLDSV.dsQLDSVTableAdapters.sp_DanhSachDiemTableAdapter();
             this.tableAdapterManager = new QLDSV.dsQLDSVTableAdapters.TableAdapterManager();
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,8 +81,9 @@
             this.btnClose,
             this.btnCancel,
             this.btnShow,
-            this.btnChange});
-            this.barManager1.MaxItemId = 6;
+            this.btnChange,
+            this.btnPrint});
+            this.barManager1.MaxItemId = 7;
             // 
             // bar1
             // 
@@ -95,6 +97,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnNew, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSave, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCancel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPrint, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnClose, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
@@ -320,6 +323,14 @@
             this.tableAdapterManager.sp_DanhSachSinhVienTheoLopTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Caption = "Print";
+            this.btnPrint.Glyph = global::QLDSV.Properties.Resources.icons8_print_32;
+            this.btnPrint.Id = 6;
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
+            // 
             // frmScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -376,5 +387,6 @@
         private System.Windows.Forms.TextBox txtScore;
         private DevExpress.XtraBars.BarButtonItem btnChange;
         private System.Windows.Forms.GroupBox groupBox2;
+        private DevExpress.XtraBars.BarButtonItem btnPrint;
     }
 }

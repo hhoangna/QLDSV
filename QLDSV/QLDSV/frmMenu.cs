@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
 
 namespace QLDSV
 {
@@ -14,6 +15,7 @@ namespace QLDSV
     {
         public string depID = "";
         public string currentClassId = "";
+        public string currentClassName = "";
         public bool enable = false;
 
         public frmMenu()
@@ -37,13 +39,17 @@ namespace QLDSV
         private void btnScore_Click(object sender, EventArgs e)
         {
             Program.classSelected = getClassIDSelected();
+            Program.className = getClassNameSelected();
             frmScore frm = new frmScore();
             frm.ShowDialog();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
         {
-
+            rpListStudentFromClass rpt = new rpListStudentFromClass(getClassIDSelected());
+            rpt.lblClass.Text = "Lớp: " + cbbClass.Text;
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
         }
 
         private void frmMenu_Load(object sender, EventArgs e)
@@ -92,6 +98,12 @@ namespace QLDSV
         {
             currentClassId = cbbClass.SelectedIndex >= 0 ? cbbClass.SelectedValue.ToString() : "";
             return currentClassId;
+        }
+
+        public String getClassNameSelected()
+        {
+            currentClassName = cbbClass.SelectedIndex >= 0 ? cbbClass.Text.ToString() : "";
+            return currentClassName;
         }
 
         private void cbbDep_SelectionChangeCommitted(object sender, EventArgs e)
