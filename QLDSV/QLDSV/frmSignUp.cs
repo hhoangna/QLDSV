@@ -121,6 +121,9 @@ namespace QLDSV
                 {
                     try
                     {
+                        Program.serverName = cbbDep.SelectedValue.ToString().Trim();
+
+                        if (Program.Connection() == 0) return;
                         String sqlStr = "";
                         sqlStr = "exec sp_TaoTaiKhoan '" + txtUserName.Text + "', '" + txtPass.Text + "', '" + txtUserID.Text + "', '" + userRole + "'";
 
@@ -171,6 +174,12 @@ namespace QLDSV
                     Program.userName = Program.currentUserName;
                     Program.password = Program.currentPass;
                 }
+                if (Program.Connection() == 0)
+                    MessageBox.Show("Connect Error", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    //     
+                }
             }
         }
 
@@ -180,12 +189,11 @@ namespace QLDSV
             this.viewPhanManhTableAdapter.Fill(this.dsView.viewPhanManh);
             this.dsView.EnforceConstraints = false;
 
-            cbbDep.DataSource = viewPhanManhBindingSource;
+            cbbDep.DataSource = Program.bds;
             cbbDep.DisplayMember = "MAKH";
             cbbDep.ValueMember = "TENKH";
             cbbDep.SelectedIndex = Program.currentBranch;
 
-            this.viewPhanManhTableAdapter.Connection.ConnectionString = Program.connectStr;
         }
     }
 }
