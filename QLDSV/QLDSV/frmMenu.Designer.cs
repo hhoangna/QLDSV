@@ -91,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(511, 84);
+            this.label2.Location = new System.Drawing.Point(458, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 22);
             this.label2.TabIndex = 3;
@@ -110,10 +110,11 @@
             // 
             this.cbbClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbClass.FormattingEnabled = true;
-            this.cbbClass.Location = new System.Drawing.Point(431, 124);
+            this.cbbClass.Location = new System.Drawing.Point(349, 124);
             this.cbbClass.Name = "cbbClass";
-            this.cbbClass.Size = new System.Drawing.Size(201, 30);
+            this.cbbClass.Size = new System.Drawing.Size(283, 30);
             this.cbbClass.TabIndex = 1;
+            this.cbbClass.SelectedIndexChanged += new System.EventHandler(this.cbbClass_SelectedIndexChanged);
             // 
             // cbbDep
             // 
@@ -121,7 +122,7 @@
             this.cbbDep.FormattingEnabled = true;
             this.cbbDep.Location = new System.Drawing.Point(53, 124);
             this.cbbDep.Name = "cbbDep";
-            this.cbbDep.Size = new System.Drawing.Size(315, 30);
+            this.cbbDep.Size = new System.Drawing.Size(232, 30);
             this.cbbDep.TabIndex = 0;
             this.cbbDep.SelectionChangeCommitted += new System.EventHandler(this.cbbDep_SelectionChangeCommitted);
             // 

@@ -20,7 +20,6 @@ namespace QLDSV
             InitializeComponent();
         }
 
-
         private void frmStudent_Load(object sender, EventArgs e)
         {
             dsQLDSV.EnforceConstraints = false;

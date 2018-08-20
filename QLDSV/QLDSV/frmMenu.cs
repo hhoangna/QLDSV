@@ -14,10 +14,17 @@ namespace QLDSV
     {
         public string depID = "";
         public string currentClassId = "";
+        public bool enable = false;
 
         public frmMenu()
         {
             InitializeComponent();
+            getStateButton();
+        }
+
+        private void getStateButton()
+        {
+            btnList.Enabled = btnReport.Enabled = btnScore.Enabled = enable;
         }
 
         private void btnList_Click(object sender, EventArgs e)
@@ -29,7 +36,9 @@ namespace QLDSV
 
         private void btnScore_Click(object sender, EventArgs e)
         {
-
+            Program.classSelected = getClassIDSelected();
+            frmScore frm = new frmScore();
+            frm.ShowDialog();
         }
 
         private void btnReport_Click(object sender, EventArgs e)
@@ -111,6 +120,12 @@ namespace QLDSV
                     initUIComboBoxClass();
                 }
             }
+        }
+
+        private void cbbClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            enable = cbbClass.SelectedIndex == -1 ? false : true;
+            getStateButton();
         }
     }
 }
