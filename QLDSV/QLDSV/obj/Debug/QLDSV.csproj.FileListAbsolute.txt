@@ -95,3 +95,4 @@ D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmTeacher.resources
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmStudent.resources
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmMenu.resources
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmScore.resources
+D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.frmSignUp.resources

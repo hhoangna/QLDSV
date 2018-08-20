@@ -32,6 +32,7 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnShow = new DevExpress.XtraBars.BarButtonItem();
+            this.btnChange = new DevExpress.XtraBars.BarButtonItem();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
             this.btnCancel = new DevExpress.XtraBars.BarButtonItem();
@@ -41,12 +42,9 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.lblStudentId = new System.Windows.Forms.Label();
             this.lbScore = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,14 +57,12 @@
             this.mONHOCTableAdapter = new QLDSV.dsQLDSVTableAdapters.MONHOCTableAdapter();
             this.sp_DanhSachDiemTableAdapter = new QLDSV.dsQLDSVTableAdapters.sp_DanhSachDiemTableAdapter();
             this.tableAdapterManager = new QLDSV.dsQLDSVTableAdapters.TableAdapterManager();
-            this.btnChange = new DevExpress.XtraBars.BarButtonItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_DanhSachDiemBindingSource)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -109,6 +105,14 @@
             this.btnShow.Id = 4;
             this.btnShow.Name = "btnShow";
             this.btnShow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnShow_ItemClick);
+            // 
+            // btnChange
+            // 
+            this.btnChange.Caption = "Change";
+            this.btnChange.Glyph = global::QLDSV.Properties.Resources.icons8_refresh;
+            this.btnChange.Id = 5;
+            this.btnChange.Name = "btnChange";
+            this.btnChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChange_ItemClick);
             // 
             // btnNew
             // 
@@ -189,56 +193,35 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.txtScore);
+            this.groupBox2.Location = new System.Drawing.Point(744, 131);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(152, 322);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(100, 166);
+            this.label8.Location = new System.Drawing.Point(46, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 22);
             this.label8.TabIndex = 11;
             this.label8.Text = "Score";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(100, 119);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(56, 22);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(100, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 22);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Student ID";
-            // 
             // txtScore
             // 
-            this.txtScore.Location = new System.Drawing.Point(208, 163);
+            this.txtScore.Location = new System.Drawing.Point(27, 155);
             this.txtScore.Name = "txtScore";
             this.txtScore.Size = new System.Drawing.Size(98, 30);
             this.txtScore.TabIndex = 8;
             this.txtScore.TextChanged += new System.EventHandler(this.txtScore_TextChanged);
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(208, 119);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 22);
-            this.lblName.TabIndex = 7;
-            // 
-            // lblStudentId
-            // 
-            this.lblStudentId.AutoSize = true;
-            this.lblStudentId.Location = new System.Drawing.Point(221, 74);
-            this.lblStudentId.Name = "lblStudentId";
-            this.lblStudentId.Size = new System.Drawing.Size(0, 22);
-            this.lblStudentId.TabIndex = 6;
             // 
             // lbScore
             // 
@@ -249,7 +232,7 @@
             this.lbScore.ItemHeight = 22;
             this.lbScore.Location = new System.Drawing.Point(0, 141);
             this.lbScore.Name = "lbScore";
-            this.lbScore.Size = new System.Drawing.Size(262, 312);
+            this.lbScore.Size = new System.Drawing.Size(738, 312);
             this.lbScore.TabIndex = 5;
             this.lbScore.SelectedIndexChanged += new System.EventHandler(this.lbScore_SelectedIndexChanged);
             // 
@@ -337,31 +320,6 @@
             this.tableAdapterManager.sp_DanhSachSinhVienTheoLopTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // btnChange
-            // 
-            this.btnChange.Caption = "Change";
-            this.btnChange.Glyph = global::QLDSV.Properties.Resources.icons8_refresh;
-            this.btnChange.Id = 5;
-            this.btnChange.Name = "btnChange";
-            this.btnChange.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChange_ItemClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.lblName);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.lblStudentId);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.txtScore);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(268, 141);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(634, 313);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            // 
             // frmScore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -378,11 +336,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdsObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sp_DanhSachDiemBindingSource)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -415,11 +373,7 @@
         private DevExpress.XtraBars.BarButtonItem btnShow;
         private System.Windows.Forms.ListBox lbScore;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtScore;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblStudentId;
         private DevExpress.XtraBars.BarButtonItem btnChange;
         private System.Windows.Forms.GroupBox groupBox2;
     }

@@ -50,7 +50,6 @@ namespace QLDSV
 
         private void frmClass_Load(object sender, EventArgs e)
         {
-            Program.connect.Close();
             dsQLDSV.EnforceConstraints = false;
             // TODO: This line of code loads data into the 'dataSetTracNghiem.LOP' table. You can move, or remove it, as needed.
             this.lOPTableAdapter.Connection.ConnectionString = Program.connectStr;

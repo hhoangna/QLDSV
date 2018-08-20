@@ -15,6 +15,7 @@ namespace QLDSV
         String subjectId = "";
         int time;
         bool enable;
+        bool isChanged = false;
         public class ScoreItem
         {
             public string studentId;
@@ -108,8 +109,6 @@ namespace QLDSV
         public void initInfo(int index)
         {
             ScoreItem item = listScore[index];
-            lblStudentId.Text = item.studentId;
-            lblName.Text = item.name;
             txtScore.Text = item.score == (double)0 ? "" : item.score.ToString();
 
         }
@@ -128,7 +127,7 @@ namespace QLDSV
                     string mamh = getSubjectIdSelected();
                     int lan = getTime();
                     double diem = dtRow[2] == DBNull.Value ? (double)0 : (double)dtRow[2];
-                    string title = "Question:" + i++;
+                    string title = "Student Id: " + masv + "\tName: " + name + "\tScore: " + diem;
                     ScoreItem item = new ScoreItem(title, masv, name, mamh, lan, diem);
                     listScore.Add(item);
                     lbScore.Items.Add(title);
@@ -187,6 +186,7 @@ namespace QLDSV
                 string valueS = txtScore.Text;
                 double value = Convert.ToDouble(valueS);
                 updateScore(index, value);
+                isChanged = true;
             }
         }
 
