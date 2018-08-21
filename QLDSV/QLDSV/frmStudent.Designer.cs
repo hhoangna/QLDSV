@@ -38,9 +38,11 @@
             System.Windows.Forms.Label dIACHILabel;
             System.Windows.Forms.Label nGHIHOCLabel;
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCountry = new DevExpress.XtraEditors.TextEdit();
+            this.cbAbsent = new System.Windows.Forms.CheckBox();
             this.bdsStudentFromClass = new System.Windows.Forms.BindingSource(this.components);
             this.dsQLDSV = new QLDSV.dsQLDSV();
+            this.cbGender = new System.Windows.Forms.CheckBox();
+            this.txtCountry = new DevExpress.XtraEditors.TextEdit();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.btnNew = new DevExpress.XtraBars.BarButtonItem();
@@ -73,8 +75,7 @@
             this.Absent = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sp_DanhSachSinhVienTheoLopTableAdapter = new QLDSV.dsQLDSVTableAdapters.sp_DanhSachSinhVienTheoLopTableAdapter();
             this.tableAdapterManager = new QLDSV.dsQLDSVTableAdapters.TableAdapterManager();
-            this.cbGender = new System.Windows.Forms.CheckBox();
-            this.cbAbsent = new System.Windows.Forms.CheckBox();
+            this.btnPrint = new DevExpress.XtraBars.BarButtonItem();
             mASVLabel = new System.Windows.Forms.Label();
             hOLabel = new System.Windows.Forms.Label();
             tENLabel = new System.Windows.Forms.Label();
@@ -84,9 +85,9 @@
             dIACHILabel = new System.Windows.Forms.Label();
             nGHIHOCLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStudentFromClass)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastname.Properties)).BeginInit();
@@ -204,16 +205,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtCountry
+            // cbAbsent
             // 
-            this.txtCountry.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "NOISINH", true));
-            this.txtCountry.Location = new System.Drawing.Point(198, 249);
-            this.txtCountry.MenuManager = this.barManager1;
-            this.txtCountry.Name = "txtCountry";
-            this.txtCountry.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCountry.Properties.Appearance.Options.UseFont = true;
-            this.txtCountry.Size = new System.Drawing.Size(801, 28);
-            this.txtCountry.TabIndex = 13;
+            this.cbAbsent.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "NGHIHOC", true));
+            this.cbAbsent.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbAbsent.Location = new System.Drawing.Point(986, 161);
+            this.cbAbsent.Name = "cbAbsent";
+            this.cbAbsent.Size = new System.Drawing.Size(33, 24);
+            this.cbAbsent.TabIndex = 19;
+            this.cbAbsent.UseVisualStyleBackColor = true;
             // 
             // bdsStudentFromClass
             // 
@@ -224,6 +224,28 @@
             // 
             this.dsQLDSV.DataSetName = "dsQLDSV";
             this.dsQLDSV.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cbGender
+            // 
+            this.cbGender.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "PHAI", true));
+            this.cbGender.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGender.Location = new System.Drawing.Point(805, 161);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(80, 24);
+            this.cbGender.TabIndex = 18;
+            this.cbGender.Text = "Male";
+            this.cbGender.UseVisualStyleBackColor = true;
+            // 
+            // txtCountry
+            // 
+            this.txtCountry.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bdsStudentFromClass, "NOISINH", true));
+            this.txtCountry.Location = new System.Drawing.Point(198, 249);
+            this.txtCountry.MenuManager = this.barManager1;
+            this.txtCountry.Name = "txtCountry";
+            this.txtCountry.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCountry.Properties.Appearance.Options.UseFont = true;
+            this.txtCountry.Size = new System.Drawing.Size(801, 28);
+            this.txtCountry.TabIndex = 13;
             // 
             // barManager1
             // 
@@ -241,8 +263,9 @@
             this.btnDel,
             this.btnRefresh,
             this.btnCancel,
-            this.btnClose});
-            this.barManager1.MaxItemId = 7;
+            this.btnClose,
+            this.btnPrint});
+            this.barManager1.MaxItemId = 8;
             // 
             // bar1
             // 
@@ -257,7 +280,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnDel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRefresh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnCancel, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnClose, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnClose, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPrint, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar1.Text = "Tools";
             // 
             // btnNew
@@ -549,26 +573,13 @@
             this.tableAdapterManager.sp_DanhSachSinhVienTheoLopTableAdapter = this.sp_DanhSachSinhVienTheoLopTableAdapter;
             this.tableAdapterManager.UpdateOrder = QLDSV.dsQLDSVTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // cbGender
+            // btnPrint
             // 
-            this.cbGender.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "PHAI", true));
-            this.cbGender.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGender.Location = new System.Drawing.Point(805, 161);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(80, 24);
-            this.cbGender.TabIndex = 18;
-            this.cbGender.Text = "Male";
-            this.cbGender.UseVisualStyleBackColor = true;
-            // 
-            // cbAbsent
-            // 
-            this.cbAbsent.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.bdsStudentFromClass, "NGHIHOC", true));
-            this.cbAbsent.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbAbsent.Location = new System.Drawing.Point(986, 161);
-            this.cbAbsent.Name = "cbAbsent";
-            this.cbAbsent.Size = new System.Drawing.Size(33, 24);
-            this.cbAbsent.TabIndex = 19;
-            this.cbAbsent.UseVisualStyleBackColor = true;
+            this.btnPrint.Caption = "Print";
+            this.btnPrint.Glyph = global::QLDSV.Properties.Resources.icons8_print_32;
+            this.btnPrint.Id = 7;
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPrint_ItemClick);
             // 
             // frmStudent
             // 
@@ -586,9 +597,9 @@
             this.Load += new System.EventHandler(this.frmStudent_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsStudentFromClass)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCountry.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtLastname.Properties)).EndInit();
@@ -642,5 +653,6 @@
         private DevExpress.XtraEditors.TextEdit txtStudentId;
         private System.Windows.Forms.CheckBox cbAbsent;
         private System.Windows.Forms.CheckBox cbGender;
+        private DevExpress.XtraBars.BarButtonItem btnPrint;
     }
 }

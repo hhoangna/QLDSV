@@ -8,11 +8,11 @@ namespace QLDSV
 {
     public partial class rpListScoreFromSubject : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpListScoreFromSubject(string classId, string subjectId, int time)
+        public rpListScoreFromSubject(string classId, string subjectId, short time)
         {
             InitializeComponent();
             this.dsQLDSV1.EnforceConstraints = false;
-            this.sp_DanhSachDiemTableAdapter.Fill(dsQLDSV1.sp_DanhSachDiem, classId, subjectId, time);
+            this.sp_DanhSachDiemTableAdapter1.Fill(dsQLDSV1.sp_DanhSachDiem, classId, subjectId, time);
         }
 
     }

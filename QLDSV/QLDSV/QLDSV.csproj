@@ -66,9 +66,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dsQLDSV.cs">
-      <DependentUpon>dsQLDSV.xsd</DependentUpon>
-    </Compile>
     <Compile Include="dsQLDSV.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +147,12 @@
     <Compile Include="rpListStudentFromClass.Designer.cs">
       <DependentUpon>rpListStudentFromClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="rpScoreFromStudent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="rpScoreFromStudent.Designer.cs">
+      <DependentUpon>rpScoreFromStudent.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmClass.resx">
       <DependentUpon>frmClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="rpListStudentFromClass.resx">
       <DependentUpon>rpListStudentFromClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rpScoreFromStudent.resx">
+      <DependentUpon>rpScoreFromStudent.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="dsQLDSV.xsc">

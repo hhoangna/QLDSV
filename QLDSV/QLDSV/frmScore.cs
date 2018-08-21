@@ -14,18 +14,18 @@ namespace QLDSV
     public partial class frmScore : Form
     {
         String subjectId = "";
-        int time;
+        short time;
         bool enable;
         public class ScoreItem
         {
             public string studentId;
             public string name;
             public string subjectId;
-            public int time;
+            public short time;
             public double score;
             public string title;
 
-            public ScoreItem(string title, string studentId, string name, string subjectId, int time, double score)
+            public ScoreItem(string title, string studentId, string name, string subjectId, short time, double score)
             {
                 this.studentId = studentId;
                 this.name = name;
@@ -90,7 +90,7 @@ namespace QLDSV
                 Program.cmd.Parameters.Clear();
                 Program.cmd.Parameters.Add("@MASV", SqlDbType.NChar).Value = score.studentId;
                 Program.cmd.Parameters.Add("@MAMH", SqlDbType.NChar).Value = score.subjectId;
-                Program.cmd.Parameters.Add("@LAN", SqlDbType.Int).Value = score.time;
+                Program.cmd.Parameters.Add("@LAN", SqlDbType.SmallInt).Value = score.time;
                 Program.cmd.Parameters.Add("@DIEM", SqlDbType.Float).Value = score.score == 0 ? (object)DBNull.Value : score.score;
 
                 Program.cmd.ExecuteNonQuery();
@@ -119,13 +119,12 @@ namespace QLDSV
             DataTable dt = Program.ExecSqlDataTable(strLenh);
             if (dt != null)
             {
-                int i = 1;
                 foreach (DataRow dtRow in dt.Rows)
                 {
                     string masv = dtRow[0].ToString();
                     string name = dtRow[1].ToString();
                     string mamh = getSubjectIdSelected();
-                    int lan = getTime();
+                    short lan = getTime();
                     double diem = dtRow[2] == DBNull.Value ? (double)0 : (double)dtRow[2];
                     string title = "Student Id: " + masv + "\tName: " + name + "\tScore: " + diem;
                     ScoreItem item = new ScoreItem(title, masv, name, mamh, lan, diem);
@@ -161,9 +160,10 @@ namespace QLDSV
             return subjectId;
         }
 
-        public int getTime()
+        public short getTime()
         {
-            time = Convert.ToInt32(txtTime.Text);
+            time = Convert.ToInt16(txtTime.Text);
+
             return time;
         }
 

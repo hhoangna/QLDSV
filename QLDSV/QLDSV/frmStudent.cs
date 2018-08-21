@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -318,28 +319,13 @@ namespace QLDSV
             return result;
         }
 
-        //private void txtSearch_TextChanged(object sender, EventArgs e)
-        //{
-        //    bdsStudentFromClass.Filter = "MASV LIKE '%" + this.txtSearch.Text + "%'" + " OR TEN LIKE '%" + this.txtSearch.Text + "%'";
-        //}
-
-        //private void checkBoxSearch_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (checkBoxSearch.Checked == true)
-        //    {
-        //        txtSearch.Text = "";
-        //        getDataStudentFormClassID("");
-        //        cbbBranch.SelectedIndex = -1;
-        //        cbbClass.SelectedIndex = -1;
-        //        cbbClass.Enabled = false;
-        //        cbbBranch.Enabled = false;
-        //    }
-        //    else
-        //    {
-        //        txtSearch.Text = "";
-        //        cbbClass.Enabled = true;
-        //        cbbBranch.Enabled = true;
-        //    }
-        //}
+        private void btnPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rpScoreFromStudent rpt = new rpScoreFromStudent(txtStudentId.Text.Trim());
+            rpt.lblName.Text = "Họ tên: " + txtFistname.Text.Trim() + " " + txtLastname.Text.Trim();
+            rpt.lblStudentId.Text = "Mã số sinh viên: " + txtStudentId.Text.Trim();
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
+        }
     }
 }

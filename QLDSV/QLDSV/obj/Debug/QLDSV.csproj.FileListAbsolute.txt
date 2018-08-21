@@ -189,3 +189,4 @@ D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\bin\Debug\es\DevExpress.XtraCharts.v16.1.Wizar
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\bin\Debug\ja\DevExpress.XtraCharts.v16.1.Wizard.resources.dll
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\bin\Debug\ru\DevExpress.XtraCharts.v16.1.Wizard.resources.dll
 D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.rpListScoreFromSubject.resources
+D:\Study\CSDLPT_QLDSV\QLDSV\QLDSV\obj\Debug\QLDSV.rpScoreFromStudent.resources

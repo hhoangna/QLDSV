@@ -74,6 +74,7 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DataField = new DevExpress.XtraReports.UI.XRControlStyle();
             this.dsQLDSV1 = new QLDSV.dsQLDSV();
+            this.sp_DanhSachDiemTableAdapter1 = new QLDSV.dsQLDSVTableAdapters.sp_DanhSachDiemTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsQLDSV1)).BeginInit();
@@ -517,6 +518,10 @@
             this.dsQLDSV1.DataSetName = "dsQLDSV";
             this.dsQLDSV1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // sp_DanhSachDiemTableAdapter1
+            // 
+            this.sp_DanhSachDiemTableAdapter1.ClearBeforeFill = true;
+            // 
             // rpListScoreFromSubject
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -528,6 +533,7 @@
             this.reportHeaderBand1});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
+            this.DataAdapter = this.sp_DanhSachDiemTableAdapter1;
             this.DataMember = "sp_DanhSachDiem";
             this.DataSource = this.dsQLDSV1;
             this.Margins = new System.Drawing.Printing.Margins(45, 100, 100, 100);
@@ -585,5 +591,6 @@
         public DevExpress.XtraReports.UI.XRLabel lblSubjectId;
         public DevExpress.XtraReports.UI.XRLabel lblTime;
         private dsQLDSV dsQLDSV1;
+        private dsQLDSVTableAdapters.sp_DanhSachDiemTableAdapter sp_DanhSachDiemTableAdapter1;
     }
 }
