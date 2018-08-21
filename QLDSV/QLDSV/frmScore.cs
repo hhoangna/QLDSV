@@ -113,9 +113,9 @@ namespace QLDSV
 
         }
 
-        public void getListScoreFromSubject(String subjectId, int time)
+        public void getListScoreFromSubject(String subjectId, short time)
         {
-            String strLenh = "exec sp_DanhSachDiem'" + Program.classSelected + "', '" + subjectId + "', '" + time + "'";
+            String strLenh = "exec sp_DanhSachDiem'" + Program.classSelected + "', '" + subjectId + "', " + time;
             DataTable dt = Program.ExecSqlDataTable(strLenh);
             if (dt != null)
             {
