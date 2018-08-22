@@ -6,13 +6,13 @@ using DevExpress.XtraReports.UI;
 
 namespace QLDSV
 {
-    public partial class rpScoreFromStudent : DevExpress.XtraReports.UI.XtraReport
+    public partial class rpListScoreFromClass : DevExpress.XtraReports.UI.XtraReport
     {
-        public rpScoreFromStudent(string studentId)
+        public rpListScoreFromClass(string classId)
         {
             InitializeComponent();
             this.dsQLDSV1.EnforceConstraints = false;
-            this.sp_InPhieuDiemCaNhanTableAdapter.Fill(dsQLDSV1.sp_InPhieuDiemCaNhan, studentId);
+            this.sp_InBangDiemLopTableAdapter.Fill(dsQLDSV1.sp_InBangDiemLop, classId);
         }
 
     }

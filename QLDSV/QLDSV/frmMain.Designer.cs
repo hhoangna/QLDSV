@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnStudent = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnLogin = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
@@ -49,12 +48,6 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribManage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonManaGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribTeacher = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonTeacherGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribStudent = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonStudentGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribReport = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonReportGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.userID = new System.Windows.Forms.ToolStripStatusLabel();
             this.userName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -64,14 +57,6 @@
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnStudent
-            // 
-            this.btnStudent.Caption = "Student";
-            this.btnStudent.Id = 7;
-            this.btnStudent.LargeGlyph = global::QLDSV.Properties.Resources.icons8_student_male;
-            this.btnStudent.Name = "btnStudent";
-            this.btnStudent.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStudent_ItemClick);
             // 
             // ribbonControl1
             // 
@@ -83,7 +68,6 @@
             this.btnExit,
             this.btnCLass,
             this.btnTeacher,
-            this.btnStudent,
             this.btnSubject,
             this.btnPoint,
             this.btnExam,
@@ -98,10 +82,7 @@
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribSystem,
-            this.ribManage,
-            this.ribTeacher,
-            this.ribStudent,
-            this.ribReport});
+            this.ribManage});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl1.Size = new System.Drawing.Size(943, 179);
             // 
@@ -155,7 +136,7 @@
             // 
             // btnPoint
             // 
-            this.btnPoint.Caption = "Transcript";
+            this.btnPoint.Caption = "Student & Score";
             this.btnPoint.Id = 9;
             this.btnPoint.LargeGlyph = global::QLDSV.Properties.Resources.icons8_scorecard_filled;
             this.btnPoint.Name = "btnPoint";
@@ -167,7 +148,6 @@
             this.btnExam.Id = 10;
             this.btnExam.LargeGlyph = global::QLDSV.Properties.Resources.icons8_questionnaire;
             this.btnExam.Name = "btnExam";
-            this.btnExam.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExam_ItemClick);
             // 
             // btnSign
             // 
@@ -175,7 +155,6 @@
             this.btnSign.Id = 11;
             this.btnSign.LargeGlyph = global::QLDSV.Properties.Resources.icons8_registration_filled;
             this.btnSign.Name = "btnSign";
-            this.btnSign.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSign_ItemClick);
             // 
             // btnTry
             // 
@@ -183,7 +162,6 @@
             this.btnTry.Id = 12;
             this.btnTry.LargeGlyph = global::QLDSV.Properties.Resources.icons8_todo_list;
             this.btnTry.Name = "btnTry";
-            this.btnTry.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTry_ItemClick);
             // 
             // btnTest
             // 
@@ -191,7 +169,6 @@
             this.btnTest.Id = 13;
             this.btnTest.LargeGlyph = global::QLDSV.Properties.Resources.icons8_todo_list;
             this.btnTest.Name = "btnTest";
-            this.btnTest.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTest_ItemClick);
             // 
             // btnReport
             // 
@@ -199,7 +176,6 @@
             this.btnReport.Id = 14;
             this.btnReport.LargeGlyph = global::QLDSV.Properties.Resources.icons8_report_card;
             this.btnReport.Name = "btnReport";
-            this.btnReport.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnReport_ItemClick);
             // 
             // btnCreate
             // 
@@ -239,49 +215,10 @@
             // 
             this.ribbonManaGroup.ItemLinks.Add(this.btnCLass);
             this.ribbonManaGroup.ItemLinks.Add(this.btnTeacher);
-            this.ribbonManaGroup.ItemLinks.Add(this.btnStudent);
             this.ribbonManaGroup.ItemLinks.Add(this.btnSubject);
             this.ribbonManaGroup.ItemLinks.Add(this.btnPoint);
             this.ribbonManaGroup.ItemLinks.Add(this.btnCreate);
             this.ribbonManaGroup.Name = "ribbonManaGroup";
-            // 
-            // ribTeacher
-            // 
-            this.ribTeacher.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonTeacherGroup});
-            this.ribTeacher.Name = "ribTeacher";
-            this.ribTeacher.Text = "Teacher";
-            // 
-            // ribbonTeacherGroup
-            // 
-            this.ribbonTeacherGroup.ItemLinks.Add(this.btnExam);
-            this.ribbonTeacherGroup.ItemLinks.Add(this.btnSign);
-            this.ribbonTeacherGroup.ItemLinks.Add(this.btnTry);
-            this.ribbonTeacherGroup.Name = "ribbonTeacherGroup";
-            // 
-            // ribStudent
-            // 
-            this.ribStudent.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonStudentGroup});
-            this.ribStudent.Name = "ribStudent";
-            this.ribStudent.Text = "Student";
-            // 
-            // ribbonStudentGroup
-            // 
-            this.ribbonStudentGroup.ItemLinks.Add(this.btnTest);
-            this.ribbonStudentGroup.Name = "ribbonStudentGroup";
-            // 
-            // ribReport
-            // 
-            this.ribReport.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonReportGroup});
-            this.ribReport.Name = "ribReport";
-            this.ribReport.Text = "Report";
-            // 
-            // ribbonReportGroup
-            // 
-            this.ribbonReportGroup.ItemLinks.Add(this.btnReport);
-            this.ribbonReportGroup.Name = "ribbonReportGroup";
             // 
             // statusStrip1
             // 
@@ -368,14 +305,7 @@
         public DevExpress.XtraBars.BarButtonItem btnLogin;
         public DevExpress.XtraBars.Ribbon.RibbonPage ribSystem;
         public DevExpress.XtraBars.Ribbon.RibbonPage ribManage;
-        public DevExpress.XtraBars.Ribbon.RibbonPage ribTeacher;
-        public DevExpress.XtraBars.Ribbon.RibbonPage ribStudent;
-        public DevExpress.XtraBars.Ribbon.RibbonPage ribReport;
         public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonManaGroup;
-        public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonReportGroup;
-        public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonStudentGroup;
-        public DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonTeacherGroup;
-        private DevExpress.XtraBars.BarButtonItem btnStudent;
         public DevExpress.XtraBars.BarButtonItem btnCreate;
         public DevExpress.XtraBars.BarButtonItem btnTry;
     }

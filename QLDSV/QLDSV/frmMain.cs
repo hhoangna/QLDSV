@@ -56,9 +56,6 @@ namespace QLDSV
             userName.Text = "Name";
             userRole.Text = "Role";
 
-            initRib(true);
-            initRibGroup(false);
-
             foreach (Form form in this.MdiChildren)
             {
                 form.Close();
@@ -68,23 +65,10 @@ namespace QLDSV
         private void frmMain_Load(object sender, EventArgs e)
         {
             btnLogout.Enabled = false;
-            initRibGroup(false);
-        }
-
-        public void initRibGroup(Boolean isEnable)
-        {
-            ribbonTeacherGroup.Enabled = isEnable;
-            ribbonStudentGroup.Enabled = isEnable;
-            ribbonReportGroup.Enabled = isEnable;
-            ribbonManaGroup.Enabled = isEnable;
-        }
-
-        public void initRib(Boolean isVisible)
-        {
-            ribStudent.Visible = isVisible;
-            ribTeacher.Visible = isVisible;
-            ribManage.Visible = isVisible;
-            ribReport.Visible = isVisible;
+            if (Program.currentRole == "USER")
+            {
+                btnCreate.Enabled = false;
+            }
         }
 
         private void btnSubject_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -135,18 +119,6 @@ namespace QLDSV
             }
         }
 
-        private void btnExam_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmQuestion));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmQuestion f = new frmQuestion();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
-        }
-
         private void btnPoint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Form frm = this.CheckExists(typeof(frmMenu));
@@ -169,54 +141,6 @@ namespace QLDSV
                 f.MdiParent = this;
                 f.Show();
             }
-        }
-
-        private void btnSign_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmRegistration));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmRegistration f = new frmRegistration();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
-        }
-
-        private void btnReport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmReport));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmReport f = new frmReport();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
-        }
-
-        private void btnTest_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmListExam));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmListExam f = new frmListExam();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
-        }
-
-        private void btnTry_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //Form frm = this.CheckExists(typeof(frmListExam));
-            //if (frm != null) frm.Activate();
-            //else
-            //{
-            //    frmListExam f = new frmListExam();
-            //    f.MdiParent = this;
-            //    f.Show();
-            //}
         }
     }
 }

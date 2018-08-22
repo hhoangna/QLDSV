@@ -64,10 +64,7 @@ namespace QLDSV
 
             Program.currentBidingSource = bdsClass;
 
-            groupBox1.Enabled = true;
-            txtClassName.Enabled = txtClassName.Enabled = false;
-
-            //setCurrentRole();
+            setCurrentRole();
             updateUIUndo();
             if (bdsClass.Count == 0) btnDel.Enabled = false;
         }
@@ -77,15 +74,18 @@ namespace QLDSV
             if (Program.currentRole == "PGV")
             {
                 cbbDep.Enabled = true;
-                initButtonBarManage(true);
             }
             else
             {
                 cbbDep.Enabled = false;
                 cbbDep.Visible = false;
-                btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-                btnSave.Enabled = btnCancel.Enabled = false;
             }
+
+            btnNew.Enabled = btnClose.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
+            btnCancel.Enabled = btnSave.Enabled = btnUndo.Enabled = btnRedo.Enabled = false;
+            groupBox1.Enabled = true;
+            groupBox2.Enabled = true;
+            txtClassName.Enabled = txtClassId.Enabled = false;
         }
 
         public void updateUIUndo()
@@ -111,6 +111,10 @@ namespace QLDSV
 
         private void cbbDep_SelectionChangeCommitted(object sender, EventArgs e)
         {
+
+            stUndo.Clear();
+            stRedo.Clear();
+            updateUIUndo();
             if (cbbDep.SelectedValue != null)
             {
                 if (cbbDep.SelectedValue.ToString() == "System.Data.DataRowView") return;
@@ -196,7 +200,8 @@ namespace QLDSV
                 sqlUpdateMethod(txtClassId.Text, txtClassName.Text, method);
             }
 
-            groupBox1.Enabled = false;
+            groupBox1.Enabled = cbbDep.Enabled = true;
+            txtClassId.Enabled = txtClassName.Enabled = false;
             groupBox2.Enabled = true;
             btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
             btnSave.Enabled = btnCancel.Enabled = false;
@@ -322,37 +327,26 @@ namespace QLDSV
                     }
                 }
             }
+            if (bdsClass.Count == 0)
+            {
+                btnDel.Enabled = false;
+            }
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtClassId.Enabled = txtClassName.Enabled = false;
-            if (Program.currentRole == "TRUONG")
-            {
-                cbbDep.Enabled = true;
-            }
-            else
-            {
-                cbbDep.Enabled = false;
-            }
-            groupBox2.Enabled = true;
+            setCurrentRole();
+            btnRefresh.Enabled = true;
             bdsClass.MoveFirst();
             stUndo.Clear();
             stRedo.Clear();
             updateUIUndo();
             this.lOPTableAdapter.Fill(this.dsQLDSV.LOP);
-
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
         }
 
         private void btnCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtClassId.Enabled = txtClassName.Enabled = false;
-            cbbDep.Enabled = true;
-            groupBox2.Enabled = true;
+            updateUIUndo();
             index = bdsClass.Position;
             bdsClass.CancelEdit();
 
@@ -362,11 +356,6 @@ namespace QLDSV
         private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
-        }
-
-        public void initButtonBarManage(Boolean isEnable)
-        {
-            btnNew.Enabled = btnEdit.Enabled = btnSave.Enabled = btnRefresh.Enabled = btnDel.Enabled = btnCancel.Enabled = btnUndo.Enabled = btnRedo.Enabled = isEnable;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -487,6 +476,5 @@ namespace QLDSV
             }
             return -1;
         }
-
     }
 }

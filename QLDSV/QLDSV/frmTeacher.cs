@@ -68,10 +68,7 @@ namespace QLDSV
 
             Program.currentBidingSource = bdsTeacher;
 
-            groupBox1.Enabled = true;
-            txtTeacherId.Enabled = txtFirstName.Enabled = txtLastName.Enabled = false;
-
-            //setCurrentRole();
+            setCurrentRole();
             updateUIUndo();
             if (bdsTeacher.Count == 0) btnDel.Enabled = false;
         }
@@ -81,14 +78,21 @@ namespace QLDSV
             if (Program.currentRole == "PGV")
             {
                 cbbDep.Enabled = true;
-                initButtonBarManage(true);
             }
             else
             {
                 cbbDep.Enabled = false;
                 cbbDep.Visible = false;
-                btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-                btnSave.Enabled = btnCancel.Enabled = false;
+            }
+            btnNew.Enabled = btnClose.Enabled = btnRefresh.Enabled = groupBox2.Enabled = groupBox1.Enabled = true;
+            btnSave.Enabled = btnCancel.Enabled = false;
+            txtDepId.Enabled = txtFirstName.Enabled = txtLastName.Enabled = txtTeacherId.Enabled = false;
+            if (bdsTeacher.Count == 0)
+            {
+                btnEdit.Enabled = btnDel.Enabled = false;
+            } else
+            {
+                btnEdit.Enabled = btnDel.Enabled = true;
             }
         }
 
@@ -115,6 +119,9 @@ namespace QLDSV
 
         private void cbbDep_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            stUndo.Clear();
+            stRedo.Clear();
+            updateUIUndo();
             if (cbbDep.SelectedValue != null)
             {
                 if (cbbDep.SelectedValue.ToString() == "System.Data.DataRowView") return;
@@ -189,6 +196,8 @@ namespace QLDSV
             currentTeacherID = ((DataRowView)bdsTeacher[index])["MAGV"].ToString();
             currentLastName = ((DataRowView)bdsTeacher[index])["TEN"].ToString();
             sqlDeleteMethod(currentTeacherID, currentFirstName, currentLastName, method);
+            setCurrentRole();
+            updateUIUndo();
         }
 
         private void btnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -203,10 +212,7 @@ namespace QLDSV
                 sqlUpdateMethod(txtTeacherId.Text, txtFirstName.Text, txtLastName.Text, method);
             }
 
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = true;
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
+            setCurrentRole();
         }
 
         public void sqlNewMethod(String teacherID, String first, String last, String method)
@@ -318,33 +324,16 @@ namespace QLDSV
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtTeacherId.Enabled = txtLastName.Enabled = txtLastName.Enabled = false;
-            if (Program.currentRole == "PGV")
-            {
-                cbbDep.Enabled = true;
-            }
-            else
-            {
-                cbbDep.Enabled = false;
-            }
-            groupBox2.Enabled = true;
+            setCurrentRole();
             bdsTeacher.MoveFirst();
             stUndo.Clear();
             stRedo.Clear();
             updateUIUndo();
             this.gIANGVIENTableAdapter.Fill(this.dsQLDSV.GIANGVIEN);
-
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
         }
 
         private void btnCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtTeacherId.Enabled = txtLastName.Enabled = txtLastName.Enabled = false;
-            cbbDep.Enabled = true;
-            groupBox2.Enabled = true;
             index = bdsTeacher.Position;
             bdsTeacher.CancelEdit();
 
@@ -354,11 +343,6 @@ namespace QLDSV
         private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
-        }
-
-        public void initButtonBarManage(Boolean isEnable)
-        {
-            btnNew.Enabled = btnEdit.Enabled = btnSave.Enabled = btnRefresh.Enabled = btnDel.Enabled = btnCancel.Enabled = btnUndo.Enabled = btnRedo.Enabled = isEnable;
         }
 
         private void btnUndo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

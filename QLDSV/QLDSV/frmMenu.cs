@@ -22,11 +22,18 @@ namespace QLDSV
         {
             InitializeComponent();
             getStateButton();
+            if (Program.currentRole == "PGV")
+            {
+                cbbDep.Enabled = true;
+            } else
+            {
+                cbbDep.Enabled = false;
+            }
         }
 
         private void getStateButton()
         {
-            btnList.Enabled = btnReport.Enabled = btnScore.Enabled = enable;
+            btnList.Enabled = btnReport.Enabled = btnScore.Enabled = btnPrintScore.Enabled = enable;
         }
 
         private void btnList_Click(object sender, EventArgs e)
@@ -138,6 +145,14 @@ namespace QLDSV
         {
             enable = cbbClass.SelectedIndex == -1 ? false : true;
             getStateButton();
+        }
+
+        private void btnPrintScore_Click(object sender, EventArgs e)
+        {
+            rpListScoreFromClass rpt = new rpListScoreFromClass(getClassIDSelected());
+            rpt.lblName.Text = "Lớp: " + cbbClass.Text;
+            ReportPrintTool print = new ReportPrintTool(rpt);
+            print.ShowPreviewDialog();
         }
     }
 }

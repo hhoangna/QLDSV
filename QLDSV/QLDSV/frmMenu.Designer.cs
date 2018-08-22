@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbbClass = new System.Windows.Forms.ComboBox();
             this.cbbDep = new System.Windows.Forms.ComboBox();
+            this.btnPrintScore = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnPrintScore);
             this.groupBox1.Controls.Add(this.btnReport);
             this.groupBox1.Controls.Add(this.btnScore);
             this.groupBox1.Controls.Add(this.btnList);
@@ -60,9 +62,9 @@
             // 
             // btnReport
             // 
-            this.btnReport.Location = new System.Drawing.Point(462, 213);
+            this.btnReport.Location = new System.Drawing.Point(206, 213);
             this.btnReport.Name = "btnReport";
-            this.btnReport.Size = new System.Drawing.Size(140, 48);
+            this.btnReport.Size = new System.Drawing.Size(117, 48);
             this.btnReport.TabIndex = 6;
             this.btnReport.Text = "Print List";
             this.btnReport.UseVisualStyleBackColor = true;
@@ -70,9 +72,9 @@
             // 
             // btnScore
             // 
-            this.btnScore.Location = new System.Drawing.Point(276, 213);
+            this.btnScore.Location = new System.Drawing.Point(360, 213);
             this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(140, 48);
+            this.btnScore.Size = new System.Drawing.Size(117, 48);
             this.btnScore.TabIndex = 5;
             this.btnScore.Text = "Input Score";
             this.btnScore.UseVisualStyleBackColor = true;
@@ -80,9 +82,9 @@
             // 
             // btnList
             // 
-            this.btnList.Location = new System.Drawing.Point(88, 213);
+            this.btnList.Location = new System.Drawing.Point(53, 213);
             this.btnList.Name = "btnList";
-            this.btnList.Size = new System.Drawing.Size(140, 48);
+            this.btnList.Size = new System.Drawing.Size(117, 48);
             this.btnList.TabIndex = 4;
             this.btnList.Text = "Student List";
             this.btnList.UseVisualStyleBackColor = true;
@@ -126,6 +128,16 @@
             this.cbbDep.TabIndex = 0;
             this.cbbDep.SelectionChangeCommitted += new System.EventHandler(this.cbbDep_SelectionChangeCommitted);
             // 
+            // btnPrintScore
+            // 
+            this.btnPrintScore.Location = new System.Drawing.Point(515, 213);
+            this.btnPrintScore.Name = "btnPrintScore";
+            this.btnPrintScore.Size = new System.Drawing.Size(117, 48);
+            this.btnPrintScore.TabIndex = 7;
+            this.btnPrintScore.Text = "Print Score";
+            this.btnPrintScore.UseVisualStyleBackColor = true;
+            this.btnPrintScore.Click += new System.EventHandler(this.btnPrintScore_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -151,5 +163,6 @@
         private System.Windows.Forms.Button btnReport;
         private System.Windows.Forms.Button btnScore;
         private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.Button btnPrintScore;
     }
 }

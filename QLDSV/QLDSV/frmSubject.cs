@@ -20,6 +20,7 @@ namespace QLDSV
         public frmSubject()
         {
             InitializeComponent();
+            txtSubName.Focus();
         }
 
         private void mONHOCBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -38,27 +39,19 @@ namespace QLDSV
             // TODO: This line of code loads data into the 'dsQLDSV.MONHOC' table. You can move, or remove it, as needed.
             this.mONHOCTableAdapter.Fill(this.dsQLDSV.MONHOC);
 
+            setCurrentRole();
         }
 
         public void setCurrentRole()
         {
-            if (Program.currentRole == "TRUONG")
+            btnNew.Enabled = btnRefresh.Enabled = btnClose.Enabled = groupBox2.Enabled = txtSearch.Enabled = true;
+            btnSave.Enabled = btnCancel.Enabled = groupBox1.Enabled = false;
+            if (bdsSubject.Count == 0)
             {
-                initButtonBarManage(false);
-            }
-            else
+                btnEdit.Enabled = btnDel.Enabled = false;
+            } else
             {
-                btnNew.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
-                btnSave.Enabled = btnCancel.Enabled = false;
-
-                if (bdsSubject.Count == 0)
-                {
-                    btnDel.Enabled = btnEdit.Enabled = btnRefresh.Enabled = false;
-                }
-                else
-                {
-                    btnDel.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
-                }
+                btnEdit.Enabled = btnDel.Enabled = true;
             }
         }
 
@@ -66,7 +59,11 @@ namespace QLDSV
         {
             index = bdsSubject.Position;
             groupBox1.Enabled = true;
+            txtSubID.Enabled = false;
+            txtSubName.Enabled = true;
             groupBox2.Enabled = false;
+            txtSubName.Focus();
+            txtSearch.Enabled = false;
             method = Program.Method.Update;
 
             btnCancel.Enabled = btnSave.Enabled = true;
@@ -77,8 +74,12 @@ namespace QLDSV
         {
             index = bdsSubject.Position;
             groupBox1.Enabled = true;
+            txtSubName.Enabled = true;
+            txtSubID.Enabled = true;
             bdsSubject.AddNew();
+            txtSubID.Focus();
             groupBox2.Enabled = false;
+            txtSearch.Enabled = false;
             method = Program.Method.New;
             txtSubID.Focus();
 
@@ -118,22 +119,14 @@ namespace QLDSV
                     return;
                 }
             }
-
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = true;
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
+            setCurrentRole();
         }
 
         private void btnCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = true;
+            setCurrentRole();
             index = bdsSubject.Position;
             bdsSubject.CancelEdit();
-
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
         }
 
         private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -143,13 +136,9 @@ namespace QLDSV
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = false;
-            groupBox2.Enabled = true;
             bdsSubject.MoveFirst();
             this.mONHOCTableAdapter.Fill(this.dsQLDSV.MONHOC);
-
-            btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
+            setCurrentRole();
         }
 
         private String checkExistData(String subId, string method, string subName)
@@ -210,10 +199,6 @@ namespace QLDSV
                 }
             }
             if (bdsSubject.Count == 0) btnDel.Enabled = false;
-        }
-        public void initButtonBarManage(Boolean isEnable)
-        {
-            btnNew.Enabled = btnEdit.Enabled = btnSave.Enabled = btnRefresh.Enabled = btnDel.Enabled = btnCancel.Enabled = isEnable;
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

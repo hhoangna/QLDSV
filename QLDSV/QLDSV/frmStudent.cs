@@ -29,11 +29,22 @@ namespace QLDSV
 
             getDataStudentFormClassID(Program.classSelected);
 
-            groupBox1.Enabled = true;
-            txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
-               = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
+            setCurrentButton();
+        }
 
-            setCurrentRole();
+        private void setCurrentButton()
+        {
+            groupBox1.Enabled = false;
+            groupBox2.Enabled = true;
+            btnNew.Enabled = btnEdit.Enabled = btnClose.Enabled = btnPrint.Enabled = true;
+            btnSave.Enabled = btnCancel.Enabled = btnRefresh.Enabled = false;
+            if (bdsStudentFromClass.Count == 0)
+            {
+                btnDel.Enabled = false;
+            } else
+            {
+                btnDel.Enabled = true;
+            }
         }
 
         public void getDataStudentFormClassID(String classID)
@@ -47,8 +58,6 @@ namespace QLDSV
             {
                 MessageBox.Show(ex.Message);
             }
-
-            setCurrentRole();
         }
 
         public bool getStateGender()
@@ -86,6 +95,7 @@ namespace QLDSV
             txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled = txtCountry.Enabled = true;
             cbAbsent.Enabled = cbGender.Enabled = true;
             groupBox2.Enabled = false;
+            txtFistname.Focus();
             method = Program.Method.Update;
 
             btnCancel.Enabled = btnSave.Enabled = true;
@@ -164,10 +174,9 @@ namespace QLDSV
                 }
                 Program.myReader.Close();
             }
-            groupBox1.Enabled = true;
+            groupBox1.Enabled = false;
             groupBox2.Enabled = true;
-            txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
-               = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
+          
             btnNew.Enabled = btnEdit.Enabled = btnDel.Enabled = btnRefresh.Enabled = true;
             btnSave.Enabled = btnCancel.Enabled = false;
         }
@@ -210,67 +219,29 @@ namespace QLDSV
                 }
             }
             Program.myReader.Close();
+            setCurrentButton();
         }
 
         private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
-               = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
-
-            if (bdsStudentFromClass.Count == 0) btnDel.Enabled = false;
-            else btnDel.Enabled = true;
+            setCurrentButton();
 
             groupBox2.Enabled = true;
             bdsStudentFromClass.MoveFirst();
             getDataStudentFormClassID(Program.classSelected);
-
-            btnNew.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
-            btnSave.Enabled = btnCancel.Enabled = false;
         }
 
         private void btnCancel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            groupBox1.Enabled = true;
-            txtFistname.Enabled = txtLastname.Enabled = txtAddress.Enabled = dpBirthday.Enabled
-               = txtCountry.Enabled = txtStudentId.Enabled = txtAddress.Enabled = cbAbsent.Enabled = cbGender.Enabled = false;
+            setCurrentButton();
             bdsStudentFromClass.MoveFirst();
             getDataStudentFormClassID(Program.classSelected);
             groupBox2.Enabled = true;
-
-            setCurrentRole();
         }
 
         private void btnClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Close();
-        }
-
-        public void setCurrentRole()
-        {
-            if (Program.currentRole == "PGV")
-            {
-                initButtonBarManage(true);
-            }
-            else
-            {
-                btnNew.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
-                btnSave.Enabled = btnCancel.Enabled = false;
-
-                if (bdsStudentFromClass.Count == 0)
-                {
-                    btnDel.Enabled = btnEdit.Enabled = btnRefresh.Enabled = false;
-                }
-                else
-                {
-                    btnDel.Enabled = btnEdit.Enabled = btnRefresh.Enabled = true;
-                }
-            }
-        }
-
-        public void initButtonBarManage(Boolean isEnable)
-        {
-            btnNew.Enabled = btnEdit.Enabled = btnSave.Enabled = btnRefresh.Enabled = btnDel.Enabled = btnCancel.Enabled = isEnable;
         }
 
         private void txtFirstName_KeyboardPressed(object sender, KeyPressEventArgs e)

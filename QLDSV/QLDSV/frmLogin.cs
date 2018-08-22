@@ -171,9 +171,6 @@ namespace QLDSV.View
         }
         public void initRibGroup(Boolean isEnable)
         {
-            Program.frmChinh.ribbonTeacherGroup.Enabled = isEnable;
-            Program.frmChinh.ribbonStudentGroup.Enabled = isEnable;
-            Program.frmChinh.ribbonReportGroup.Enabled = isEnable;
             Program.frmChinh.ribbonManaGroup.Enabled = isEnable;
         }
     }
