@@ -142,31 +142,10 @@ namespace QLDSV.View
 
             Program.frmChinh.btnLogin.Enabled = false;
             Program.frmChinh.btnLogout.Enabled = true;
-
-            //if (Program.currentRole == "GIANGVIEN")
-            //{
-            //    initRibGroup(true);
-            //    Program.frmChinh.ribManage.Visible = false;
-            //    Program.frmChinh.ribStudent.Visible = false;
-            //    Program.frmChinh.btnTry.Enabled = true;
-            //}
-            //else if (Program.currentRole == "SINHVIEN")
-            //{
-            //    initRibGroup(true);
-            //    Program.frmChinh.ribTeacher.Visible = false;
-            //    Program.frmChinh.ribManage.Visible = false;
-            //}
-            //else if (Program.currentRole == "TRUONG")
-            //{
-            //    initRibGroup(true);
-            //    Program.frmChinh.btnTry.Enabled = false;
-            //    Program.frmChinh.ribStudent.Visible = false;
-            //}
-            //else if (Program.currentRole == "PGV")
-            //{
-            //    initRibGroup(true);
-            //    Program.frmChinh.ribStudent.Visible = false;
-            //}
+            if (Program.currentRole == "USER")
+            {
+                Program.frmChinh.btnCreate.Enabled = false;
+            }
             initRibGroup(true);
         }
         public void initRibGroup(Boolean isEnable)

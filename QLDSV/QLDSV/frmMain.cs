@@ -65,10 +65,7 @@ namespace QLDSV
         private void frmMain_Load(object sender, EventArgs e)
         {
             btnLogout.Enabled = false;
-            if (Program.currentRole == "USER")
-            {
-                btnCreate.Enabled = false;
-            }
+            ribbonManaGroup.Enabled = false;
         }
 
         private void btnSubject_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
